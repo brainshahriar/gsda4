@@ -130,8 +130,7 @@
                                                                 <td>
                                                                     {{$lesson->vimeo_id}}
                                                                 </td>
-                                                                <td>
-
+                                                                <td> 
                                                                     {{$lesson->lesson_title}}
                                                                 </td>
                                                                 <td>
