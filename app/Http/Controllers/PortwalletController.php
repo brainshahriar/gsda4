@@ -123,8 +123,8 @@ class PortwalletController extends Controller
       //  dd($request->amount);
        $data = array(
            'order' => array(
-             //'amount' => 1,
-              'amount' => floatval($request->amount),
+             'amount' => 1,
+              //'amount' => floatval($request->amount),
                'currency' => 'BDT',
               // 'redirect_url' => 'https://globalskills.com.bd/portwallet/portwallet_verify_transaction/shopping_cart',
                'redirect_url' => URL::to('/portwallet/portwallet_verify_transaction/shopping_cart'),
@@ -206,7 +206,7 @@ class PortwalletController extends Controller
             );
             //session()->forget('cart');
             Cart::truncate();
-            return redirect('/carts')->with($notification);
+            return redirect('/paymentsuccess')->with($notification);
 
         }
 

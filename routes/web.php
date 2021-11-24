@@ -341,3 +341,6 @@ Route::get('/admin/home/download-pdf/{id}', [UserRequestCertificateController::c
 Route::get('/admin/faqs', [FaqController::class,'create'])->name('faqs')->middleware('is_admin');
 Route::post('/admin/faqs/store', [FaqController::class,'store'])->name('store')->middleware('is_admin');
 Route::get('/admin/delete-faq/{faq_id}', [FaqController::class,'deleteFaq'])->middleware('is_admin');
+
+
+Route::get('/paymentsuccess', [CourseController::class,'paymentSuccess']);

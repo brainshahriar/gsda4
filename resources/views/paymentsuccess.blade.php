@@ -14,7 +14,7 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-
+                
      </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
         <br>
         <strong>
             <div class="alert alert-light text-center" role="alert" id="secondsdisplay">
-
+            
             </div>
         </strong>
 <strong>
@@ -130,13 +130,13 @@ function displayseconds()
 {
     seconds+=1;
     document.getElementById("secondsdisplay").innerText="This Page Will Be Redirect After 5 Seconds "+seconds+" Seconds"
-}
+}  
 setInterval(displayseconds,1000);
 function redirectpage()
 {
     window.location="http://localhost:8000/user_profile";
 }
 setTimeout('redirectpage()',4000);
-</script>
+</script> 
 @endpush
 @endsection
