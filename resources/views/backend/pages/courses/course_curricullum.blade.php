@@ -141,8 +141,6 @@
                                                                     {{$lesson->preview}}
                                                                 </td>
                                                                 <td>
-
-
                                                                     {{$lesson->files}}
                                                                 </td>
                                                                 <td>

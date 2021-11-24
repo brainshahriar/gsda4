@@ -39,9 +39,8 @@
               </div>
               <div class="form-group">
                   <label for="lesson_title">Lesson Title</label>
-                  <textarea type="text" class="form-control" name="lesson_title" aria-describedby="lesson_title"
-                         placeholder="Enter Lesson name" value=>{{ $lesson->lesson_title }}</textarea>
-
+                  <input type="text" class="form-control" name="lesson_title" aria-describedby="lesson_title"
+                       placeholder="Enter Lesson name" value="{{old('lesson_title', $lesson->lesson_title)}}">
               </div>
 
               <div class="form-group">
