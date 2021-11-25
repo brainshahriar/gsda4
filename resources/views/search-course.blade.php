@@ -30,7 +30,7 @@
 
 <ul class="search-item-design">
     @forelse ($classroom as $item)
-    <a href="/home/classroom/course_details/{{$item->id}}">
+    <a href="{{ url('home/classroom/course_details/'.$item->id.'/'.$item->classroom_slug) }}">
         <li class="design-li">
             <img src="{{asset("storage/Classroom courses/$item->classroom_course_image")}}" alt="" height="40px;" width="40px;">
             <strong style="color: white">{{ $item->classroom_course_title }}</strong> <hr>

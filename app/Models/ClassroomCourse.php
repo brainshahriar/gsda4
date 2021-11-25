@@ -29,4 +29,8 @@ class ClassroomCourse extends Model
 
     return $this->belongsTo(ClassroomTrainer::class,'trainer_id');
    }
+   public function getRouteKeyName()
+   {
+     return 'classroom_slug';
+   }
 }

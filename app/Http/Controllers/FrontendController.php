@@ -43,7 +43,7 @@ class FrontendController extends Controller
   public function course_details_frontend($id,$slug)
   {
 
-
+    //dd($slug);
     $course_categories= CourseCategory::all();
     $main_categories= MainCategory::all();
     $classroom_course_details= ClassroomInfo::where('classroom_course_id',$id)->first();

@@ -26,6 +26,7 @@
       <div class="item" >
         <div class="cours-bx">
           <div class="action-box">
+            
             <a href="{{ url('home/classroom/course_details/'.$row->id.'/'.$row->classroom_slug) }}"><img src="{{asset("storage/Classroom courses/$row->classroom_course_image")}}" alt=""></a>
 
             <!--<form class="hidden" action="{{route('add-carts')}}" method="post">
