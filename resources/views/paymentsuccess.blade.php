@@ -6,15 +6,13 @@
 
 
 <!-- Content -->
-
 <div class="page-content">
     <!-- Page Heading Box ==== -->
     <div class="page-banner ovbl-dark" style="background-image:url({{ asset('images/banner/banner2.jpg')}});">
         <div class="container">
             <div class="page-banner-entry">
               <br/>
-              <br/>
-                
+              <br/>               
      </div>
         </div>
     </div>
@@ -131,12 +129,12 @@ function displayseconds()
     seconds+=1;
     document.getElementById("secondsdisplay").innerText="This Page Will Be Redirect After 5 Seconds "+seconds+" Seconds"
 }  
-setInterval(displayseconds,1000);
+setInterval(displayseconds,50000);
 function redirectpage()
 {
     window.location="http://localhost:8000/user_profile";
 }
-setTimeout('redirectpage()',4000);
+setTimeout('redirectpage()',50000);
 </script> 
 @endpush
 @endsection
