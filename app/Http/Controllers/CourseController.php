@@ -306,7 +306,7 @@ class CourseController extends Controller
 
 
 
-  public function course_details_frontend($id)
+  public function course_details_frontend($id,$slug)
   {
 
     $course_categories= CourseCategory::all();

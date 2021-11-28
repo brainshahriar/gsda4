@@ -23,7 +23,7 @@
       <div class="item">
         <div class="cours-bx">
           <div class="action-box">
-          <a href="home/course_details/{{$row->id}}"><img src="{{asset("storage/courses/$row->course_image")}}" alt="" height="420"
+          <a href="{{ url('home/course_details/'.$row->id.'/'.$row->elearning_slug) }}"><img src="{{asset("storage/courses/$row->course_image")}}" alt="" height="420"
             width="700"></a>
               <?php
               $enrolled= App\Models\UserEnrollment::where('user_id',Auth::id())->where('course_id',$row->id)->first();
@@ -51,7 +51,6 @@
               <span>Review</span>
               <ul class="cours-star">
                 @if (App\Models\CourseReview::where('course_id',$row->id)->first())
-
 
                 @php
                    $courseReview=App\Models\CourseReview::where('course_id',$row->id)->where('status','approve')->latest()->get();

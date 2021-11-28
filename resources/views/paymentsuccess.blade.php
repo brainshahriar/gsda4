@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Congrats confetti</title>
+  <title>GSDA</title>
   <link rel="stylesheet" href="{{ asset('common' )}}/style.css">
 
 
@@ -21,20 +21,24 @@
       <!-- About Us ==== -->
       <div class="text-center" role="alert">
           @if(Auth::user())
-       <strong>Dear {{ Auth::user()->name }} Your Payment has been succesfully recieved! </strong>
+       <strong style="color: green">Dear {{ Auth::user()->name }} Your Payment has been succesfully recieved! </strong>
        @endif
       </div>
 
       <br>
-      <strong>
-          <div class="text-center" role="alert" id="secondsdisplay">
-          
-          </div>
-      </strong>
+
 
 <br>
 
     <p>You have Successfully Enrolled The Course!!!</p>
+
+    <strong>
+      <div class="text-center" role="alert" id="secondsdisplay">
+      
+      </div>
+  </strong>
+  <br>
+
     <div class="text-center" role="alert">
       If you do not redirect within <strong style="color:red">5</strong> Seconds Please <strong style="color:red">Continue</strong>
     </div>
@@ -53,34 +57,27 @@
 <!-- partial -->
   
 <script type="text/javascript" src="{{ asset('common' )}}/script.js"></script>
+<script>
 
+
+  var seconds=0;
+  function displayseconds()
+  {
+      seconds+=1;
+      document.getElementById("secondsdisplay").innerText="This Page Will Be Redirect After 5 Seconds "+seconds+" Seconds"
+  }  
+  setInterval(displayseconds,1000);
+  function redirectpage()
+  {
+      window.location="http://localhost:8000/user_profile";
+  }
+  setTimeout('redirectpage()',4000);
+  </script> 
 </body>
 
 
 
-@extends('frontend.layouts.master')
 
 
-@section('content')
 
-@push('scripts')
-
-<script>
-
-
-var seconds=0;
-function displayseconds()
-{
-    seconds+=1;
-    document.getElementById("secondsdisplay").innerText="This Page Will Be Redirect After 5 Seconds "+seconds+" Seconds"
-}  
-setInterval(displayseconds,1000);
-function redirectpage()
-{
-    window.location="http://localhost:8000/user_profile";
-}
-setTimeout('redirectpage()',4000);
-</script> 
-@endpush
-@endsection
 
