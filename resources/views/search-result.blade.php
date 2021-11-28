@@ -88,7 +88,7 @@
                 <br>
                 @forelse ($course as $item)
                     <div class="searched-item">
-                        <a href="{{ url('home/course_details/'.$item->id.'/'.$item->classroom_slug) }}">
+                        <a href="{{ url('home/course_details/'.$item->id.'/'.$item->elearning_slug) }}">
                             <div class="design-li">
                                 <h5>{{$item->main_category->mcategory_title}}</h5>
                                 <img src="{{asset("storage/courses/$item->course_image")}}" alt="" height="80px;" width="80px;">

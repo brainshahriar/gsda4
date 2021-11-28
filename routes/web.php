@@ -100,7 +100,7 @@ Route::get('/home/classroom_courses/{subcat_id}', [ClassroomCourseController::cl
 //blogs routes frontend
 Route::get('/all-blogs', [BlogsController::class,'index'])->name('all-blogs');
 Route::get('/blogs_details', [BlogsController::class,'blogs_details'])->name('blogs_details');
-Route::get('/blogs_details/{id}', [BlogsController::class,'blogs_details_index']);
+Route::get('/blogs_details/{id}/{slug}', [BlogsController::class,'blogs_details_index']);
 
 
 //add to carts Routes

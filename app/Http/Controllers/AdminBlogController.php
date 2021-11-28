@@ -27,6 +27,7 @@ class AdminBlogController extends Controller
     {
 
         $blogs_title = $request->blogs_title;
+        $blogs_slug = strtolower(str_replace(' ','-',$request->blogs_title));
         $short_description = $request->short_description;
         $blogs_image =$request->file('file');
         $filename=null;
@@ -42,6 +43,7 @@ class AdminBlogController extends Controller
 
         $blog = new AdminBlog();
         $blog->blogs_title = $blogs_title;
+        $blog->blogs_slug = $blogs_slug;
         $blog->short_description =$short_description;
         $blog->blogs_image= $filename;
         $blog->save();
