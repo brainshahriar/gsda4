@@ -14,7 +14,6 @@
             <div class="page-banner-entry">
               <br/>
               <br/>
-
      </div>
         </div>
     </div>

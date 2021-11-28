@@ -40,6 +40,9 @@ class CourseController extends Controller
 
 
     $course_title=$request->course_title;
+
+    $elearning_slug = strtolower(str_replace(' ','-',$request->course_title));
+
     $regular_price=$request->regular_price;
     $sale_price=$request->sale_price;
 
@@ -68,6 +71,7 @@ class CourseController extends Controller
     $course->course_category_id =$course_category_id;
 
     $course->course_title=$course_title;
+    $course->elearning_slug=$elearning_slug;
     $course->regular_price=$regular_price;
     $course->sale_price=$sale_price;
 

@@ -105,7 +105,7 @@
 
                 @forelse ($course1 as $item)
                 <div class="searched-item">
-                    <a href="/home/classroom/course_details/{{$item->id}}">
+                    <a href="{{ url('home/classroom/course_details/'.$item->id.'/'.$item->classroom_slug) }}">
                         <div class="design-li">
                             <h5>{{$item->main_category->mcategory_title}}</h5>
                             <img src="{{asset("storage/Classroom courses/$item->classroom_course_image")}}" alt="" height="80px;" width="80px;">

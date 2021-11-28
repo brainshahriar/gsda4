@@ -136,7 +136,7 @@
                     </ul>
                   </div>
                   <div class="price">
-                    <del>{{$row->regular_price}}৳</del>
+                    <del>{{$row->regular_price}}৳</del> 
                     <h5>{{$row->sale_price}}৳</h5>
                   </div>
                 </div>
