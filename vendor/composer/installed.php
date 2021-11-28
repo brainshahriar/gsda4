@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'cd6fe0129b16ed3772b4d350b4f6556cc525897c',
+        'reference' => 'f8a994e2b3662fa3496b9154d49d5a7b989ce2cb',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -449,12 +449,12 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'cd6fe0129b16ed3772b4d350b4f6556cc525897c',
+            'reference' => 'f8a994e2b3662fa3496b9154d49d5a7b989ce2cb',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -518,6 +518,15 @@
             'install_path' => __DIR__ . '/../laravelcollective/html',
             'aliases' => array(),
             'reference' => 'ae15b9c4bf918ec3a78f092b8555551dd693fde3',
+            'dev_requirement' => false,
+        ),
+        'laravelium/sitemap' => array(
+            'pretty_version' => '8.0.1',
+            'version' => '8.0.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravelium/sitemap',
+            'aliases' => array(),
+            'reference' => 'ae5023139178a8de9b615b21a66368f5025d3a43',
             'dev_requirement' => false,
         ),
         'league/commonmark' => array(

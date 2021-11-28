@@ -1,5 +1,10 @@
 <?php
 
+
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
+use App\Models\Course;
+
 use App\Http\Controllers\PortwalletController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MasteringController;
@@ -345,3 +350,34 @@ Route::get('/admin/delete-faq/{faq_id}', [FaqController::class,'deleteFaq'])->mi
 
 
 Route::get('/paymentsuccess', [CourseController::class,'paymentSuccess']);
+
+
+
+//sitemap route
+
+Route::get('generate-sitemap', function(){
+
+    // create new sitemap object
+    $sitemap = App::make("sitemap");
+
+    // add items to the sitemap (url, date, priority, freq)
+    $sitemap->add(URL::to('home'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
+    $sitemap->add(URL::to('page'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
+
+    // get all posts from db
+    $courses = Course::all();
+
+    // add every post to the sitemap
+    foreach ($courses as $course)
+    {
+        $sitemap->add(URL::to('home/course_details/'.$course->id.'/'.$course->elearning_slug),  $course->updated_at, '1.0', 'daily');
+
+    }
+
+    // generate your sitemap (format, filename)
+    $sitemap->store('xml', 'sitemap');
+    // this will generate file mysitemap.xml to your public folder
+
+    return redirect(url('sitemap.xml'));
+
+});
