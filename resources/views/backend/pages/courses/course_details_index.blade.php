@@ -75,11 +75,9 @@
         <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
           <div class="course-detail-bx">
 
-
         @if($course->video_type==0)
-
+        
         <div class="preview-video-box">
-
               <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{ $course->preview_id }}" data-gall="myGallery">
                 <img src="{{asset("storage/courses/$course->course_image")}}" alt="" class="img-fluid">
                 <div class="img">
@@ -87,9 +85,11 @@
                 </div>
               </a>
               @if(count($course->sections) > 0)
+              
               @foreach($course->sections as $section)
               @if(count($section->lessons) > 0)
               @foreach($section->lessons as $lesson)
+              
               @if($lesson->preview==1)
               <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{ $lesson->youtube_url }}" data-gall="myGallery"></a>
               @endif
@@ -97,10 +97,6 @@
               @endif
               @endforeach
               @endif
-
-
-
-
       </div>
           @else
           <div class="preview-video-box">
@@ -110,30 +106,28 @@
                 <div class="img">
                   <i class="fab fa-youtube fa-4x"></i>
                 </div>
-
             </a>
         </div>
         @endif
-
-
-
+ 
+        
           {{-- <button class="video-play" data-video-id="o-Mh4UB7Kgc">Youtube Video</button>
           <button class="video-play" data-video-id="595181733" data-channel="vimeo">Vimeo Video</button> --}}
-
             @if($enrolled)
+           
               <div class="course-price">
-              <a href="/home/course_details/view/{{$course->id}}" class="btn">Already Enrolled</a>
+
+              <a href="/home/course_details/view/{{$course->id}}/{{ $course->elearning_slug }}" class="btn">Already Enrolled</a>
+              
             </div>
             @else
-
+     
             <div class="course-price">
+
               <del>{{$course->regular_price}}৳</del>
               <h4 class="price">{{$course->sale_price}}৳</h4>
             </div>
             <div class="course-buy-now text-center">
-
-
-
             </div>
             <br>
               <div class="course-buy-now text-center">
@@ -141,12 +135,8 @@
                 <form class="hidden" action="{{route('buy-now')}}" method="post">
                   @csrf
                   <input type="hidden" name="course_id" value="{{$course->id}}">
-
                   <button  class="btn">Buy Now</button>
                 </form>
-
-
-
                   </div>
             <br>
             <div class="course-buy-now text-center">

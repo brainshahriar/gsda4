@@ -193,7 +193,7 @@ Route::get('/home/lesson/delete/{lesson_id}', [CourseController::class,'lessonDe
 
 
 // user enroolment route
-Route::get('home/course_details/view/{id}',[UserEnrollmentController::class,'index']);
+Route::get('home/course_details/view/{id}/{slug}',[UserEnrollmentController::class,'index']);
 Route::post('home/get-all-vimeo-id',[UserEnrollmentController::class,'getVimeoId'])->name('get-all-vimeo-id');
 
 
@@ -389,4 +389,4 @@ Route::get('generate-sitemap', function(){
 
 //coupon 
 
-Route::get('/admin/coupon', [CouponController::class,'create'])->middleware('is_admin');
+Route::get('/admin/coupon', [CouponController::class,'create'])->name('coupon')->middleware('is_admin');

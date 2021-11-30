@@ -23,10 +23,11 @@ class UserEnrollmentController extends Controller
       //session()->put('checkout', true);
       $this->middleware('auth');
   }
-    public function index($id)
+    public function index($id,$slug)
 
     {
-
+      
+ 
         $user_enrollment= UserEnrollment::where('course_id',$id)->where('user_id',Auth::id())->get();
           //dd($user_enrollment);
         //dd(count($user_enrollment));
@@ -38,7 +39,7 @@ class UserEnrollmentController extends Controller
           $course_details= CourseOverview::where('course_id',$id)->get();
           $sections= Section::where('course_id',$id)->get();
           $lessons= Lesson::where('course_id',$id)->get();
-
+           
           $vimeo_ids= Course::
           leftJoin('lessons', 'courses.id', '=', 'lessons.course_id')
               ->where('courses.id',$id)
@@ -64,7 +65,7 @@ class UserEnrollmentController extends Controller
              //dd($data);
           return view('/frontend/users/user_enrollment',compact('course_categories','main_categories','course','section','course_details','sections','lessons','vimeo','youtube','type','courseReview','rating','avgRating','trainer','enrolled','data'));
 
-        } else{
+        }else{
           $notification=array(
               'message'=>"You're not eligible to access this page!!!",
               'alert-type'=>'danger'

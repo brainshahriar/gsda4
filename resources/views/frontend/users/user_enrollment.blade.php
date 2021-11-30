@@ -213,9 +213,7 @@
               @endif
               @endforeach
               @endif
-
                      </div>
-
                             <div class="ttr-post-info">
                                 <div class="ttr-post-title">
                                     <h2 class="post-title">{{$course->course_title}}</h2>
@@ -254,18 +252,14 @@
                                     <h5 class="m-b5">Learning Outcomes</h5>
                                     <ul class="list-checked primary">
                                         {!!$course->course_details->learning_outcomes!!}
-
                                     </ul>
-
                                 </div>
                             </div>
                         </div>
 
                         <div class="" id="instructor">
                         <h4>Instructor</h4>
-
                         @foreach ($trainer as $item)
-
                         <div class="instructor-bx">
                           <div class="instructor-author">
                             <img src="{{asset($item->image)}}" alt="">
@@ -281,13 +275,9 @@
                           </div>
                         </div>
                         @endforeach
-
                       </div>
-
-
                       <div class="" id="reviews">
                         <h4>Reviews</h4>
-
                         <div class="review-bx">
                           <div class="product-add-review">
                             <h4 class="title">Write your own review</h4>
@@ -329,18 +319,13 @@
                                     @error('rating')
                                         <span class="text text-danger">{{ $message }}</span>
                                     @enderror
-
                                   </tbody>
                                 </table><!-- /.table .table-bordered -->
                               </div><!-- /.table-responsive -->
                             </div><!-- /.review-table -->
-
                             <div class="review-form">
                               <div class="form-container">
-
-
                                   <div class="row">
-
                                     <div class="col-md-12">
                                       <div class="form-group">
                                         <label for="exampleInputReview">Review <span class="astk">*</span></label>
@@ -351,18 +336,13 @@
                                       </div><!-- /.form-group -->
                                     </div>
                                   </div><!-- /.row -->
-
                                   <div class="action text-right">
                                     <button class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
                                   </div><!-- /.action -->
-
                                 </form><!-- /.cnt-form -->
                                 @foreach ($courseReview as $review)
-
-
                                 <div class="product-reviews">
                                   <h5 class="title">{{ $review->user->name }}</h5>
-
                                   <div class="reviews">
                                     <div class="review">
                                       <div class="review-title">
@@ -379,15 +359,10 @@
                                 @endforeach
                               </div><!-- /.form-container -->
                             </div><!-- /.review-form -->
-
                           </div><!-- /.product-add-review -->
-
-
                         </div>
-
                       </div>
                     </div>
-
                 </div>
             </div>
         </div>

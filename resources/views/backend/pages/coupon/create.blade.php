@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
   <div class="db-breadcrumb">
-    <h4 class="breadcrumb-title">FAQ</h4>
+    <h4 class="breadcrumb-title">Coupon</h4>
     <ul class="db-breadcrumb-list">
       <li><a href="{{route('admin.home')}}"><i class="fa fa-home"></i>Home</a></li>
       <li>Coupon</li>
@@ -17,9 +17,9 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-            <h4 class="card-title">FAQ</h4>
-            <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#FaqAdd"><i class="fas fa-plus-circle"></i></a>
-             @include('backend.modals.faqaddmodal')
+            <h4 class="card-title">Coupon</h4>
+            <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#CouponAdd"><i class="fas fa-plus-circle"></i></a>
+             @include('backend.modals.couponaddmodal')
           </div>
         <div class="table table-responsive">
           <table id="user_list" class="table table-bordered">
@@ -55,7 +55,7 @@
                     <a href="#" data-toggle="modal" data-target="#FaqEdit{{$row->id}}"><i class="fas fa-edit"></i></a>
 
                   <a  href="/admin/delete-faq/{{$row->id}}" id="delete"><i class="fas fa-trash"></i></a>
-                      {{-- @include('backend.modals.trainereditmodal') --}}
+                      @include('backend.modals.trainereditmodal')
 
                 </td>
 

@@ -317,6 +317,7 @@ class CourseController extends Controller
     //$sections= Section::where('course_id',$id)->get();
     //$lessons= Lesson::where('course_id',$id)->get();
     $course= Course::with(['sections.lessons'])->where('id',$id)->first();
+    //dd($course['sections.lessons']);
 
 
     $enrolled= UserEnrollment::where('user_id',Auth::id())->where('course_id',$id)->first();
