@@ -41,6 +41,7 @@ use App\Http\Controllers\ReviewFromAdminController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\UserRequestCertificateController;
 
+use App\Http\Controllers\CouponController;
 
 
 /*
@@ -381,3 +382,11 @@ Route::get('generate-sitemap', function(){
     return redirect(url('sitemap.xml'));
 
 });
+
+//sitemap end
+
+
+
+//coupon 
+
+Route::get('/admin/coupon', [CouponController::class,'create'])->middleware('is_admin');

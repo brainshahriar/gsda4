@@ -69,6 +69,12 @@
                           </a>
                       </li>
                       <li>
+                        <a href="{{route('coupon')}}" class="ttr-material-button">
+                          <span class="ttr-icon"><i class="fab fa-cc-diners-club"></i></span>
+                                  <span class="ttr-label">Coupon</span>
+                                </a>
+                            </li>
+                      <li>
                       <a href="{{route('manage-blogs')}}" class="ttr-material-button">
                         <span class="ttr-icon"><i class="fab fa-blogger"></i></i></span>
                                 <span class="ttr-label">Blogs</span>

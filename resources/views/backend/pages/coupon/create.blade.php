@@ -7,7 +7,7 @@
     <h4 class="breadcrumb-title">FAQ</h4>
     <ul class="db-breadcrumb-list">
       <li><a href="{{route('admin.home')}}"><i class="fa fa-home"></i>Home</a></li>
-      <li>FAQ</li>
+      <li>Coupon</li>
     </ul>
   </div>
 
@@ -26,15 +26,15 @@
             <thead>
               <tr>
                 <th class="wd-10">SL</th>
-                <th>Subject</th>
-                <th>Description</th>
-                <th class="wd-10">Video Url</th>
-                <th>Image</th>
+                <th>C.Name</th>
+                <th>C.Discount</th>
+                <th class="wd-10">C.Validity</th>
+                <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-               @foreach ($faqs as $row)
+               {{-- @foreach ($faqs as $row)
 
               <tr>
                 <td>{{$loop->index+1}}</td>
@@ -64,7 +64,7 @@
 
               </tr>
 
-              @endforeach
+              @endforeach --}}
             </tbody>
           </table>
         </div>
