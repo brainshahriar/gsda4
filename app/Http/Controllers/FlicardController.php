@@ -39,7 +39,8 @@ class FlicardController extends Controller
     }
     public function flipcard_frontend()
     {
-        $flipcard=Flipcard::all();
+        
+        $flipcard = Flipcard::paginate(1);
         $course=Course::all();
         return view ('frontend.pages.flipcard',compact('flipcard','course'));
     }
@@ -53,4 +54,5 @@ class FlicardController extends Controller
      );
      return Redirect()->back()->with($notification);
      }
+     
 }
