@@ -43,6 +43,7 @@ use App\Http\Controllers\UserRequestCertificateController;
 
 use App\Http\Controllers\CouponController;
 
+use App\Http\Controllers\FlicardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -390,3 +391,14 @@ Route::get('generate-sitemap', function(){
 //coupon 
 
 Route::get('/admin/coupon', [CouponController::class,'create'])->name('coupon')->middleware('is_admin');
+
+
+//flipcard
+
+Route::get('/admin/flipcard', [FlicardController::class,'create'])->name('flipcard')->middleware('is_admin');
+Route::get('/admin/store', [FlicardController::class,'store'])->name('flipcard-store');
+
+
+Route::get('flipcard_view', [FlicardController::class,'flipcard_frontend'])->name('flipcards');
+
+
