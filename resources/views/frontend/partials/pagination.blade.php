@@ -5,11 +5,8 @@
     @if($paginator->onFirstPage())
     <li class="previous"><a><i class="ti-arrow-left"></i> Prev</a></li>
 
-
-
     @else
     <li class="previous"><a href="{{$paginator->previousPageUrl()}}"><i class="ti-arrow-left"></i> Prev</a></li>
-
     @endif
 
     @if(is_array($elements[0]))

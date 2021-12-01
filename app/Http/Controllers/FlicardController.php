@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Course;
 
 use App\Models\Flipcard;
+use App\Models\FlipcardUser;
 use Carbon\Carbon;
 
 class FlicardController extends Controller
@@ -53,6 +54,16 @@ class FlicardController extends Controller
          'alert-type'=>'success'
      );
      return Redirect()->back()->with($notification);
+     }
+     public function storeflipcard(Request $request){
+        $data=FlipcardUser::insert([
+            'user_id'=>$request->user_id,
+            'course_id'=>$request->course_id,
+            'flipcard_id'=>$request->flipcard_id,
+            'mark'=>$request->mark,
+            'created_at'=>Carbon::now(),
+          ]);
+          return response()->json($data);
      }
      
 }

@@ -36,19 +36,17 @@
                                 @endif
                                 @if($item->hints2)
                                 <button id="mybtn2" class="btn btn-primary" onclick="myFunction2()">Hints 2</button>
-                         
-                                <p id="myDIV2" style="margin-right:5px;display: none;color:#800869;font-weight:700;font-size:30px">{{ $item->hints2 }}</p>
+                                <p id="myDIV2" style="margin-right:5px;display: none;color:green;font-weight:700;font-size:30px">{{ $item->hints2 }}</p>
                                 @endif
-
                                 @if($item->hints3)
                                 <button id="mybtn3" class="btn btn-primary" onclick="myFunction3()">Hints 3</button>
                                 
-                                <p id="myDIV3" style="margin-right:5px;display: none;color:#800869;font-weight:700;font-size:30px">{{ $item->hints3 }}</p>
+                                <p id="myDIV3" style="margin-right:5px;display: none;color:red;font-weight:700;font-size:30px">{{ $item->hints3 }}</p>
                                 @endif
                                 @if($item->hints4)
                                 <button id="mybtn4" class="btn btn-primary" onclick="myFunction4()">Hints 4</button>
                                 
-                                <p id="myDIV4" style="margin-right:5px; display: none;color:#800869;font-weight:700;font-size:30px">{{ $item->hints4 }}</p>
+                                <p id="myDIV4" style="margin-right:5px; display: none;color:blue;font-weight:700;font-size:30px">{{ $item->hints4 }}</p>
                                 @endif
                         </div>
 
@@ -61,7 +59,6 @@
               <div class="back">
                   
                   <div class="inner">
-
                       <div class="description">
                          <h5 style="font-size:20px; font-weight: 700">{{ $item->answer }}</h5>
                       </div>
@@ -71,10 +68,13 @@
                       </label>
                   </div>
                   <strong><h3 class="text-center">Is Your Ans Correct?</h3></strong>
-                  <div class="row text-center">
-                    <a class="btn btn-success" href="#">Yes</a>
-                      <a class="btn btn-danger" href="#">No</a>
-                  </div>
+                  <form id="flipcardForm">
+                    <div class="row text-center">
+                        <a class="btn btn-success" href="#">Yes</a>
+                          <a class="btn btn-danger" href="#">No</a>
+                      </div>
+                  </form>
+     
 
               </div>
           </div>
@@ -83,8 +83,6 @@
 
   </div>
   @endforeach
-
-
     </div>
     <br>
     <br>
@@ -150,5 +148,22 @@
   }
 }
 </script>
+
+@push('scripts')
+
+<script>
+    $("#flipcardForm").submit(function(e){
+        e.preventDefault();
+        let user_id = $("#user_id").val();
+        let course_id = $("#user_id").val();
+        let flipcard_id = $("#flipcard_id").val();
+        let mark = $("#mark").val();
+        let _token=$("input[name=_token]").val();
+
+        
+    });
+</script>
+    
+@endpush
 </body>
 </html>
