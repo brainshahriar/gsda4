@@ -17,13 +17,13 @@ class CreateFlipcardsTable extends Migration
             $table->id();
             $table->integer('user_id')->nullable();
             $table->integer('course_id')->nullable();
-            $table->string('image')->nullabel(); 
+            $table->string('image')->nullable(); 
             $table->string('question');
             $table->string('answer');
-            $table->string('hints_1')->nullable();
-            $table->string('hints_2')->nullable();
-            $table->string('hints_3')->nullable();
-            $table->string('hints_4')->nullable();
+            $table->string('hints1')->nullable();
+            $table->string('hints2')->nullable();
+            $table->string('hints3')->nullable();
+            $table->string('hints4')->nullable();
             $table->string('user_answer')->nullable();
             $table->string('time')->nullable();
             $table->timestamps();

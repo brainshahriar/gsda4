@@ -396,7 +396,8 @@ Route::get('/admin/coupon', [CouponController::class,'create'])->name('coupon')-
 //flipcard
 
 Route::get('/admin/flipcard', [FlicardController::class,'create'])->name('flipcard')->middleware('is_admin');
-Route::get('/admin/store', [FlicardController::class,'store'])->name('flipcard-store');
+Route::post('/admin/store', [FlicardController::class,'store'])->name('flipcard-store');
+Route::get('/admin/delete-flipcard/{flipcard}', [FlicardController::class,'delete'])->middleware('is_admin');
 
 
 Route::get('flipcard_view', [FlicardController::class,'flipcard_frontend'])->name('flipcards');

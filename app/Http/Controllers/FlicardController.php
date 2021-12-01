@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\Course;
 
 use App\Models\Flipcard;
+use Carbon\Carbon;
 
 class FlicardController extends Controller
 {
     public function create()
     {
+        $flipcard=Flipcard::all();
         $course=Course::all();
-        return view ('backend.pages.flipcard.create',compact('course'));
-
+        return view ('backend.pages.flipcard.create',compact('course','flipcard'));
     }
 
     public function store(Request $request){
@@ -38,6 +39,18 @@ class FlicardController extends Controller
     }
     public function flipcard_frontend()
     {
-        return view ('frontend.pages.flipcard');
+        $flipcard=Flipcard::all();
+        $course=Course::all();
+        return view ('frontend.pages.flipcard',compact('flipcard','course'));
     }
+
+    public function delete($flipcard_id){
+
+        Flipcard::findOrFail($flipcard_id)->delete();
+        $notification=array(
+         'message'=>'Delete Success',
+         'alert-type'=>'success'
+     );
+     return Redirect()->back()->with($notification);
+     }
 }

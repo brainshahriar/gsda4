@@ -26,36 +26,31 @@
             <thead>
               <tr>
                 <th class="wd-10">SL</th>
-                <th></th>
-                <th>C.Discount</th>
-                <th class="wd-10">C.Validity</th>
-                <th>Status</th>
+                <th>Course</th>
+                <th>Question</th>
+                <th class="wd-10">Answer</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-               {{-- @foreach ($faqs as $row)
+                @foreach ($flipcard as $row)
 
               <tr>
                 <td>{{$loop->index+1}}</td>
                 <td class="user_name">
-                    {{$row->subject}}
+                    {{$row->course->course_title}}
                 </td>
                 <td>
-                    <textarea name="" id="" cols="30" disabled rows="2">{!!$row->description !!}</textarea>
+                    {{$row->question}}
                 </td>
+                <td>
+                    {{$row->answer}}
+                </td>
+                <td>
+                    {{-- <a href="#" data-toggle="modal" data-target="#FaqEdit{{$row->id}}"><i class="fas fa-edit"></i></a> --}}
 
-                <td>
-                    {{$row->video_url}}
-                </td>
-                <td>
-                    <img src="{{asset( $row->image) }}" alt="">
-                </td>
-                <td>
-                    <a href="#" data-toggle="modal" data-target="#FaqEdit{{$row->id}}"><i class="fas fa-edit"></i></a>
-
-                  <a  href="/admin/delete-faq/{{$row->id}}" id="delete"><i class="fas fa-trash"></i></a>
-                      @include('backend.modals.trainereditmodal')
+                  <a  href="/admin/delete-flipcard/{{$row->id}}" id="delete"><i class="fas fa-trash"></i></a>
+                      {{-- @include('backend.modals.trainereditmodal') --}}
 
                 </td>
 
@@ -64,7 +59,7 @@
 
               </tr>
 
-              @endforeach --}}
+              @endforeach 
             </tbody>
           </table>
         </div>
