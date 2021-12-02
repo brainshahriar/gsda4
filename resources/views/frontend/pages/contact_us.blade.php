@@ -58,7 +58,7 @@
         </div>
       </div>
       <div class="col-lg-7 col-md-7">
-        <div  class="contact-bx ajax-form"  >
+        <div  class="contact-bx"  >
           <input type="hidden" id="token" value="{{ @csrf_token() }}">
 
           <div id="res" ></div>
@@ -173,6 +173,7 @@
   //add to cart
 
 </script>
+
 
 
 @endpush
