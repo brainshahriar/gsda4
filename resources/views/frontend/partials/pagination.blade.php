@@ -8,13 +8,11 @@
     @else
     <li class="previous"><a href="{{$paginator->previousPageUrl()}}"><i class="ti-arrow-left"></i> Prev</a></li>
     @endif
-
     @if(is_array($elements[0]))
     @foreach($elements[0] as $page => $url)
           <li class="active"><a href="{{$url}}">{{$page}}</a></li>
     @endforeach
     @endif
-
     @if($paginator->hasMorePages())
     <li class="next"><a href="{{$paginator->nextPageUrl()}}">Next <i class="ti-arrow-right"></i></a></li>
 

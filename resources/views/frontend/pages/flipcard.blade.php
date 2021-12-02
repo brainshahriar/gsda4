@@ -68,12 +68,21 @@
                       </label>
                   </div>
                   <strong><h3 class="text-center">Is Your Ans Correct?</h3></strong>
-                  <form id="flipcardForm">
-                    <div class="row text-center">
-                        <a class="btn btn-success" href="#">Yes</a>
-                          <a class="btn btn-danger" href="#">No</a>
+        <div  class="contact-bx ajax-form"  >
+          <input type="hidden" id="token" value="{{ @csrf_token() }}">
+          <input type="hidden" name="user_id" id="user_id" value={{Auth::id()}}>
+          <input type="hidden" name="course_id" id="course_id" value="{{$item->id}}">
+          <input type="hidden" name="flipcard_id" id="flipcard_id" value="{{$item->id}}">
+          <input type="hidden" name="mark" id="mark" value="1">
+
+                    <div class="row text-center ">
+                        <button type="submit"  class="btn btn-success" href="#">Yes</button>
+                          <button class="btn btn-danger" href="#">No</a>
+        <button name="submit" type="submit" value="Submit" class="btn button-md" onclick="addFlipcard()">Submit</button>
+
                       </div>
-                  </form>
+                 </div>                     
+
      
 
               </div>
@@ -142,28 +151,62 @@
   if (x.style.display === "none") {
     x.style.display = "inline";
     y.style.display = "none";
-
   } else {
     x.style.display = "none";
   }
 }
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+  $.ajaxSetup({
+      'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')
+  })
+  //product view modal
+  function addFlipcard()
+  {
+    var name=$('#user_id').val();
+    var email=$('#course_id').val();
+    var phone=$('#flipcard_id').val();
+    var message=$('#mark').val();
 
-@push('scripts')
+    $.ajax({
+      type:"POST",
+      dataType:"json",
+      data:{user_id:user_id,course_id:course_id,flipcard_id:flipcard_id,mark:mark},
+      url:"/flipcard-ajax/store",
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      success:function(data)
+      {
+        let timerInterval
+            Swal.fire({
+              title: 'Message Sent!',
+              html: 'I will close in <b></b> milliseconds.',
+              timer: 2000,
+              timerProgressBar: true,
+              didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                  b.textContent = Swal.getTimerLeft()
+                }, 100)
+              },
+              willClose: () => {
+                clearInterval(timerInterval)
+              }
+            }).then((result) => {
+              / Read more about handling dismissals below /
+              if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+              }
+            })
+             console.log('successfully data added');
+      }
+    })
+  }
+  //add to cart
 
-<script>
-    $("#flipcardForm").submit(function(e){
-        e.preventDefault();
-        let user_id = $("#user_id").val();
-        let course_id = $("#user_id").val();
-        let flipcard_id = $("#flipcard_id").val();
-        let mark = $("#mark").val();
-        let _token=$("input[name=_token]").val();
-
-        
-    });
 </script>
-    
-@endpush
 </body>
+
 </html>

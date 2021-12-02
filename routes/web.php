@@ -402,5 +402,5 @@ Route::get('/admin/delete-flipcard/{flipcard}', [FlicardController::class,'delet
 
 Route::get('flipcard_view', [FlicardController::class,'flipcard_frontend'])->name('flipcards');
 
-Route::post('/flipcard/store', [FlicardController::class,'storeflipcard']);
+Route::post('flipcard-ajax/store', [FlicardController::class,'storeflipcard']);
 
