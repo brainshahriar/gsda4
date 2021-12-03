@@ -412,3 +412,9 @@ Route::post('flipcard-ajax/store', [FlicardController::class,'storeflipcard']);
 
 Route::get('quizes', [QuizController::class,'index'])->name('quiz');
 Route::post('store/quiz', [QuizController::class,'store'])->name('quiz-store');
+
+Route::get('/quize/delete/{question_id}', [QuizController::class,'destroy']);;
+
+Route::get('/quize/addquestion/{question_id}', [QuizController::class,'index']);;
+
+

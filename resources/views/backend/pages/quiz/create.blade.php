@@ -19,7 +19,15 @@
     <form class="form-horizontal" role="form" action="{{ route('quiz-store') }}" method="POST" enctype="multipart/form-data">
         @csrf
     <div class="space-4"></div>
-        
+    <div class="form-group">
+        <label for="custom select">Select Course</label>
+        <select class="form-control" name="elearning_course_id">
+          <option label="Choose Course"></option>
+          <?php foreach ($courses as $item): ?>
+            <option value="{{$item->id}}">{{$item->course_title}}</option>
+          <?php endforeach; ?>
+        </select>
+      </div>
     <div class="space-4"></div>
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Quiz Name </label>
@@ -81,9 +89,11 @@
      <!-- PAGE CONTENT ENDS -->
     </div><!-- /.col -->
     </div>
+    <br>
+    <br>
     
     
-    {{-- <div class="col-md-12">
+    <div class="col-md-12">
         {{$quizes->links()}}
         <table class="table table-bordered" id="datatables">
            <thead>
@@ -114,17 +124,17 @@
                    <td>{{$data->number_of_question}} </td>
                    <td><input type="checkbox" name="status" class="quiz-status" data_id="{{$data->id}}" {{$data->status=='1'?'checked':''}}> </td>
     
-                   <td><a href="/quize/addquestion/{{$data->id}}">Add Question</a></td>
+                   <td><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#QuestionAdd{{ $data->id }}">Add Question</i></a>
+                   </td>
+                   @include('backend.pages.quiz.questionaddmodal')
                    <td><a href="/quizes/{{$data->id}}">Details</a></td>
                    <td><a href="/quizes/{{$data->id}}/edit">Edit</a></td>
-                   <td>{{Form::open(['url'=>'/quizes/'.$data->id,'method'=>'Delete'])}}
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure delete this?')">Delete</button>
-                  {{Form::close()}}</td>
+                   <td><a id="delete" class="btn btn-danger" href="/quize/delete/{{ $data->id }}">Delete</a></td>
                </tr>
                @endforeach
            </tbody>
         </table>
-    </div> --}}
+    </div>
     
     
     @endsection
@@ -190,6 +200,18 @@
             }	 
             });
         });
+        $(function(){
+    'use strict';
+
+    $('#datatables').DataTable({
+      responsive: false,
+      language: {
+        searchPlaceholder: 'Search...',
+        sSearch: '',
+        lengthMenu: '_MENU_ ',
+      }
+    });
+  })
     </script>
     <script type="text/javascript">
     function previewImage(event) {
