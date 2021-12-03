@@ -108,22 +108,20 @@
                    <th>Status</th>
                    <th>Add Question</th>
                    <th>Details</th>
-                   <th>Edit</th>
+                   <th>Edits</th>
                    <th>Delete</th>
                </tr>
            </thead>
            <tbody>
                @foreach($quizes as $key=>$data)
                <tr>
-                   <td>{{++$key}} </td>
-                   <td>{{$data->quiz_name}} </td>
+                   <td>{{++$key}}</td>
+                   <td>{{$data->quiz_name}}</td>
                    <td>{{$data->description}} </td>
                    <td>{{$data->quiz_date}} </td>
-                   <td>{{$data->quiz_time}} </td>
-                    
+                   <td>{{$data->quiz_time}} </td>                   
                    <td>{{$data->number_of_question}} </td>
                    <td><input type="checkbox" name="status" class="quiz-status" data_id="{{$data->id}}" {{$data->status=='1'?'checked':''}}> </td>
-    
                    <td><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#QuestionAdd{{ $data->id }}">Add Question</i></a>
                    </td>
                    @include('backend.pages.quiz.questionaddmodal')

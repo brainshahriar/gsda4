@@ -22,6 +22,16 @@
                         </select>
                       </div>
 
+                      <div class="form-group">
+                        <label for="custom select">Select Q.Name</label>
+                        <select class="form-control" name="quiz_name">
+                          <option label="Choose Course"></option>
+                          <?php foreach ($quizes as $item): ?>
+                            <option value="{{$item->id}}">{{$item->quiz_name}}</option>
+                          <?php endforeach; ?>
+                        </select>
+                      </div>
+
 
                     <div class="form-group">
                         <label for="question">Question</label>
@@ -32,41 +42,37 @@
                     <div class="form-group">
                         <label for="vimeo_id">Answer</label>
                         <input type="text" class="form-control" name="answer" aria-describedby="answer"
-                               placeholder="Answer">
+                               placeholder="Answer">  
 
                     </div>
                     <div class="form-group">
-                        <label for="Hints 1">Hints 1</label>
-                        <input type="text" class="form-control" name="hints1" aria-describedby="hints1"
-                               placeholder="Hints 1">
+                        <label for="Hints 1">Option 1</label>
+                        <input type="text" class="form-control" name="option[]" aria-describedby="hints1"
+                               placeholder="Options 1">
 
                     </div>
                     <div class="form-group">
-                        <label for="Hints 2">Hints 2</label>
-                        <input type="text" class="form-control" name="hints2" aria-describedby="hints2"
-                               placeholder="Hints 2">
+                        <label for="Hints 2">Option 2</label>
+                        <input type="text" class="form-control" name="ooption[]" aria-describedby="hints2"
+                               placeholder="Options 2">
                     </div>
                     <div class="form-group">
-                        <label for="Hints 3">Hints 3</label>
-                        <input type="text" class="form-control" name="hints3" aria-describedby="hints3"
-                               placeholder="Hints 3">
+                        <label for="Hints 3">Option 3</label>
+                        <input type="text" class="form-control" name="option[]" aria-describedby="hints3"
+                               placeholder="Options 3">
                     </div>
                     <div class="form-group">
-                        <label for="Hints 4">Hints 4</label>
-                        <input type="text" class="form-control" name="hints4" aria-describedby="hints4"
-                               placeholder="Hints 4">
+                        <label for="Hints 4">Option 4</label>
+                        <input type="text" class="form-control" name="option[]" aria-describedby="hints4"
+                               placeholder="Options 4">
 
                     </div>
                     <div class="form-group">
-                        <label for="Hints 4">Time</label>
-                        <input type="text" class="form-control" name="time" aria-describedby="time"
-                               placeholder="Hints 4">
+                        <label for="Hints 4">Correct Answer</label>
+                        <input type="text" class="form-control" name="answer" aria-describedby="time"
+                               placeholder="Enter">
                     </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Image</label>
-                        <input type="file" name="image" class="form-control-file"
-                               onchange="previewImage(this)">
-                    </div>
+
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
