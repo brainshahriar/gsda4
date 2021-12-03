@@ -15,16 +15,19 @@
 <!-- partial:index.partial.html -->
 <div class="wrapper">
   <div class="col-md-12">
-      @foreach ($flipcard as $item)
+
+  
+      @foreach ($flipcard as $index => $item)
           
-   
+
     <div class="col-md-4">
       <div class="card" style="width: 80rem; height: 50rem;">
           <input type="checkbox" id="card{{ $item->id }}" class="more">
           <div class="content">
               <div class="front" style="background-image:url({{ asset('image/ITIL4.png')}});)">
                   <div class="inner">
-                     
+
+                      <h1 style="font-weight:700;">Card : {{$index + $flipcard->firstItem()}} </h1>
                       <h2>{{ $item->question }}</h2>
                       <div class="rating">
                         <div class="row">
@@ -66,25 +69,25 @@
                           <i class="fas fa-arrow-left"></i>
                       </label>
                   </div>
+                  <div  id="myBTN">
                   <strong><h3 class="text-center">Is Your Ans Correct?</h3></strong>
+
         <form  id="frm">
         @csrf
           <input type="hidden" name="user_id" id="user_id" value={{Auth::id()}}>
           <input type="hidden" name="course_id" id="course_id" value="{{$item->id}}">
           <input type="hidden" name="flipcard_id" id="flipcard_id" value="{{$item->id}}">
           <input type="hidden" name="mark" id="mark" value="{{$item->id}}">
-                    <div class="row text-center ">
-                       <div  id="myBTN">
-                        <button type="submit"  class="btn btn-success" href="#">Yes</button>
+                    <div class="row text-center">
+                          <button class="btn btn-success" id="mybtn5" onclick="myFunction5()" name="submit" type="submit" value="Submit" id="frmSubmit" class="btn button-md">Yes</button>
                           <button class="btn btn-danger" id="mybtn5" onclick="myFunction5()" name="submit" type="submit" value="Submit" id="frmSubmit" class="btn button-md">No</button>
-                      </div>
+                    </div>
                       </div>
                  </form>                     
               </div>
           </div>
       </div>
     </div>
-
   </div>
   @endforeach
     </div>
@@ -94,9 +97,10 @@
     <br>
     <div class="col-lg-12 m-b20 text-center">
 
-        {{$flipcard->links('frontend.partials.pagination')}}
+       {{ $flipcard->links()}}
     
     </div>
+    
 <!-- partial -->
 <!-- Latest compiled and minified JavaScript -->
 

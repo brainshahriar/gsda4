@@ -44,6 +44,8 @@ use App\Http\Controllers\UserRequestCertificateController;
 use App\Http\Controllers\CouponController;
 
 use App\Http\Controllers\FlicardController;
+use App\Http\Controllers\QuizController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -404,3 +406,9 @@ Route::get('flipcard_view', [FlicardController::class,'flipcard_frontend'])->nam
 
 Route::post('flipcard-ajax/store', [FlicardController::class,'storeflipcard']);
 
+
+
+//quiz Controller
+
+Route::get('quizes', [QuizController::class,'index'])->name('quiz');
+Route::post('store/quiz', [QuizController::class,'store'])->name('quiz-store');

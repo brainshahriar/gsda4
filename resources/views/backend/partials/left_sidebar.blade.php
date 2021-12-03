@@ -105,6 +105,12 @@
                                           </a>
                                       </li>
                                       <li>
+                                        <a href="{{route('quiz')}}" class="ttr-material-button">
+                                          <span class="ttr-icon"><i class="fas fa-folder-open"></i></span>
+                                                  <span class="ttr-label">Quiz</span>
+                                                </a>
+                                            </li>
+                                      <li>
                                       <a href="{{route('manage-evolution')}}" class="ttr-material-button">
                                         <span class="ttr-icon"><i class="far fa-star"></i></span>
                                                 <span class="ttr-label">Evolution Lists</span>
