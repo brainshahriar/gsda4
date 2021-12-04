@@ -10,16 +10,20 @@
     </ul>
   </div>
   <!-- Card -->
+  
+
   @foreach($questions as $index=>$item)
-
-
   <h3>{{$item->course->course_title}}</h3>
   <hr>
   <h5>{{ $index+1 }}.{{$item->question}}</h5> 
   <ol   class="ul-list"  style="list-style-type: lower-alpha;" >
 
-
-    <li>&nbsp;<input type="radio" {{ $item->option1 || $item->option2 || $item->option3 || $item->option4 == $item->answer ? 'checked' : '' }}  /> </li>
+    <li>&nbsp;<input type="radio" {{$item->options==$item->answer ? 'checked' : ''}} />
+    @foreach ($options as $opt)
+    <li value="{{ $opt }}">{{ ucwords($opt) }}</li>        
+    @endforeach
+    
+    </li>
    
 
     

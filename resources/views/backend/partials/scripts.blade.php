@@ -1,6 +1,9 @@
 <script src="{{ asset('admin/js/jquery.min.js')}}"></script>
 <script src="{{ asset('admin/vendors/bootstrap/js/popper.min.js')}}"></script>
 <script src="{{ asset('admin/vendors/bootstrap/js/bootstrap.min.js')}}"></script>
+
+<script src="{{ asset('backend') }}/lib/tagsinput/bootstrap-tagsinput.min.js"></script>
+
 <script src="{{ asset('admin/vendors/bootstrap-select/bootstrap-select.min.js')}}"></script>
 <script src="{{ asset('admin/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js')}}"></script>
 <script src="{{ asset('admin/vendors/magnific-popup/magnific-popup.js')}}"></script>
@@ -13,8 +16,13 @@
 <script src="{{ asset('admin/vendors/scroll/scrollbar.min.js')}}"></script>
 
 <script src="{{asset('backend')}}/lib/datatables/jquery.dataTables.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script src="{{asset('backend')}}/lib/datatables-responsive/dataTables.responsive.js"></script>
 <script src="{{asset('backend')}}/lib/select2/js/select2.min.js"></script>
+
+
 
 <script src="{{ asset('admin/js/functions.js')}}"></script>
 <script src="{{ asset('admin/vendors/chart/chart.min.js')}}"></script>
@@ -27,6 +35,7 @@
 <script src="{{asset('admin/summernote/js/popper.min.js')}}" ></script>
 <script src="{{asset('admin/summernote/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('admin/summernote/js/summernote.min.js')}}"></script>
+<script src="{{ asset('backend') }}/lib/tagsinput/bootstrap-tagsinput.min.js"></script>
 <script src="{{ asset('backend') }}/lib/sweetalert/sweetalert.min.js"></script>
 
 
