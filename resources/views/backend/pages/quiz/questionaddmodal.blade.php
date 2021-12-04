@@ -31,35 +31,14 @@
                           <?php endforeach; ?>
                         </select>
                       </div>
-
-
                     <div class="form-group">
                         <label for="question">Question</label>
                         <input type="text" class="form-control" name="question" aria-describedby="question"
                                placeholder="Question">
-
                     </div>
                     <div class="form-group">
-                        <label for="Hints 1">Option 1</label>
-                        <input type="text" class="form-control" name="option1" aria-describedby="hints1"
-                               placeholder="Options 1">
-
-                    </div>
-                    <div class="form-group">
-                        <label for="Hints 2">Option 2</label>
-                        <input type="text" class="form-control" name="option2" aria-describedby="hints2"
-                               placeholder="Options 2">
-                    </div>
-                    <div class="form-group">
-                        <label for="Hints 3">Option 3</label>
-                        <input type="text" class="form-control" name="option3" aria-describedby="hints3"
-                               placeholder="Options 3">
-                    </div>
-                    <div class="form-group">
-                        <label for="Hints 4">Option 4</label>
-                        <input type="text" class="form-control" name="option4" aria-describedby="hints4"
-                               placeholder="Options 4">
-
+                      <label for="options">Options</label>
+                      <input class="form-control" type="text" name="options"  placeholder="Options" data-role="tagsinput">
                     </div>
                     <div class="form-group">
                         <label for="Hints 4">Correct Answer</label>

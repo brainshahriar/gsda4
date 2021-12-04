@@ -10,64 +10,22 @@
     </ul>
   </div>
   <!-- Card -->
-  <div class="row" id="basic-table">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-          <h4 class="card-title">Questions</h4>
-        </div>
+  @foreach($questions as $index=>$item)
 
-        <div class="table table-responsive">
-          <table id="user_list" class="table table-bordered">
-            <thead>
-              <tr>
-                <th class="wd-10p">Sl</th>
-                <th class="wd-10p">Course.Name</th>
 
-                <th class="wd-10p">Quiz.Name</th>
-                <th >Question</th>
-                <th class="wd-10p">Answer</th>
-                <th class="wd-10p">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($questions as $key=>$row)
+  <h3>{{$item->course->course_title}}</h3>
+  <hr>
+  <h5>{{ $index+1 }}.{{$item->question}}</h5> 
+  <ol   class="ul-list"  style="list-style-type: lower-alpha;" >
 
-              <tr>
-                <td>{{++$key}}</td>
-                <td class="user_name">
-                    {{$row->course->course_title}}
 
-                </td>
-                <td class="user_name">
-                    {{$row->quiz->quiz_name}}
+    <li>&nbsp;<input type="radio" {{ $item->option1 || $item->option2 || $item->option3 || $item->option4 == $item->answer ? 'checked' : '' }}  /> </li>
+   
 
-                </td>
+    
+  </ol>
 
-                <td>
-                    {{$row->question}}
-                </td>
-                <td>
-                    {{$row->answer}}
-                </td>
-
-                <td>
-                  <a id="delete" href="/question/delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
-
-                </td>
-
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  @endforeach
     <!-- Modal -->
-
 </div>
-
-
 @endsection

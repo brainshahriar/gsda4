@@ -20,10 +20,7 @@ class CreateQuestionsTable extends Migration
              $table->string('question')->nullable();
            $table->string('answer')->nullable();
            $table->string('status')->nullable();
-           $table->string('option1')->nullable();
-           $table->string('option2')->nullable();
-           $table->string('option3')->nullable();
-           $table->string('option4')->nullable();
+           $table->string('options')->nullable();
             $table->string('note')->nullable();
            $table->string('user_id')->nullable();
            $table->timestamps();
