@@ -45,7 +45,7 @@ use App\Http\Controllers\CouponController;
 
 use App\Http\Controllers\FlicardController;
 use App\Http\Controllers\QuizController;
-
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -417,5 +417,9 @@ Route::get('/quize/delete/{question_id}', [QuizController::class,'destroy']);;
 
 Route::get('/quize/addquestion/{question_id}', [QuizController::class,'index']);;
 
-Route::post('/question/store', [QuizController::class,'store'])->name('question-store');;
+Route::post('/question/store', [QuestionController::class,'questionStore'])->name('question-store');
+
+Route::get('/question/view/{question_id}', [QuestionController::class,'questionView']);
+
+Route::get('/question/delete/{question_id}', [QuestionController::class,'destroy']);;
 

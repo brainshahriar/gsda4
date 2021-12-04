@@ -23,11 +23,11 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="custom select">Select Q.Name</label>
+                        <label for="custom select">Select Quiz Name</label>
                         <select class="form-control" name="quiz_id">
-                          <option label="Choose Course"></option>
-                          <?php foreach ($quizes as $item): ?>
-                            <option value="{{$item->id}}">{{$item->quiz_name}}</option>
+                          <option label="Choose Quiz"></option>
+                          <?php foreach ($quizes as $items): ?>
+                            <option value="{{$items->id}}">{{$items->quiz_name}}</option>
                           <?php endforeach; ?>
                         </select>
                       </div>
@@ -66,7 +66,7 @@
                         <input type="text" class="form-control" name="answer" aria-describedby="time"
                                placeholder="Enter">
                     </div>
-
+                    
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

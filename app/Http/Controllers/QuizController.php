@@ -45,7 +45,6 @@ class QuizController extends Controller
         //
     }
 
-
     public function destroy($question_id)
     {
         Quize::findOrFail($question_id)->delete();

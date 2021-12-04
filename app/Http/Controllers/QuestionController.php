@@ -8,12 +8,11 @@ use App\Models\Quize;
 use App\Models\Question;
 use App\Models\Option;
 
-
 class QuestionController extends Controller
 {
-    public function store(Request $request)
+    public function questionStore(Request $request)
     {
-      dd($request->all());
+
        $data=$request->all();
       Question::create($data);
        
@@ -23,6 +22,21 @@ class QuestionController extends Controller
         'alert-type'=>'success'
     );
     return Redirect()->back()->with($notification);
+    }
+    public function questionView($id)
+    {
+      $questions=Question::where('quiz_id',$id)->with('course','quiz')->get();
+      return view ('backend.pages.quiz.questionview',compact('questions'));
+    }
+    
+    public function destroy($question_id)
+    {
+      Question::findOrFail($question_id)->delete();
+        $notification=array(
+         'message'=>'Delete Success',
+         'alert-type'=>'success'
+     );
+     return Redirect()->back()->with($notification);
     }
 
 }

@@ -125,7 +125,7 @@
                    <td><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#QuestionAdd{{ $data->id }}">Add Question</i></a>
                    </td>
                    @include('backend.pages.quiz.questionaddmodal')
-                   <td><a href="/quizes/{{$data->id}}">Details</a></td>
+                   <td><a href="/question/view/{{$data->id}}">Details</a></td>
                    <td><a href="/quizes/{{$data->id}}/edit">Edit</a></td>
                    <td><a id="delete" class="btn btn-danger" href="/quize/delete/{{ $data->id }}">Delete</a></td>
                </tr>
