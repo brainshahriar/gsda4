@@ -417,4 +417,5 @@ Route::get('/quize/delete/{question_id}', [QuizController::class,'destroy']);;
 
 Route::get('/quize/addquestion/{question_id}', [QuizController::class,'index']);;
 
+Route::post('/question/store', [QuizController::class,'store'])->name('question-store');;
 

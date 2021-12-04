@@ -9,12 +9,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('question-store') }}" method="POST">
                     @csrf
 
                     <div class="form-group">
                         <label for="custom select">Select Course</label>
-                        <select class="form-control" name="course_id">
+                        <select class="form-control" name="elearning_course_id">
                           <option label="Choose Course"></option>
                           <?php foreach ($courses as $item): ?>
                             <option value="{{$item->id}}">{{$item->course_title}}</option>
@@ -24,7 +24,7 @@
 
                       <div class="form-group">
                         <label for="custom select">Select Q.Name</label>
-                        <select class="form-control" name="quiz_name">
+                        <select class="form-control" name="quiz_id">
                           <option label="Choose Course"></option>
                           <?php foreach ($quizes as $item): ?>
                             <option value="{{$item->id}}">{{$item->quiz_name}}</option>
@@ -40,30 +40,24 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="vimeo_id">Answer</label>
-                        <input type="text" class="form-control" name="answer" aria-describedby="answer"
-                               placeholder="Answer">  
-
-                    </div>
-                    <div class="form-group">
                         <label for="Hints 1">Option 1</label>
-                        <input type="text" class="form-control" name="option[]" aria-describedby="hints1"
+                        <input type="text" class="form-control" name="option1" aria-describedby="hints1"
                                placeholder="Options 1">
 
                     </div>
                     <div class="form-group">
                         <label for="Hints 2">Option 2</label>
-                        <input type="text" class="form-control" name="ooption[]" aria-describedby="hints2"
+                        <input type="text" class="form-control" name="option2" aria-describedby="hints2"
                                placeholder="Options 2">
                     </div>
                     <div class="form-group">
                         <label for="Hints 3">Option 3</label>
-                        <input type="text" class="form-control" name="option[]" aria-describedby="hints3"
+                        <input type="text" class="form-control" name="option3" aria-describedby="hints3"
                                placeholder="Options 3">
                     </div>
                     <div class="form-group">
                         <label for="Hints 4">Option 4</label>
-                        <input type="text" class="form-control" name="option[]" aria-describedby="hints4"
+                        <input type="text" class="form-control" name="option4" aria-describedby="hints4"
                                placeholder="Options 4">
 
                     </div>
