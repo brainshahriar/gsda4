@@ -94,11 +94,12 @@
     
     
     <div class="col-md-12">
-        {{$quizes->links()}}
+ 
         <table class="table table-bordered" id="datatables">
            <thead>
                <tr>
                    <th>Sl</th>
+                   <th>Course Name</th>
                    <th>Quiz Name</th>
                    <th>Description</th>
                    <th>Date</th>
@@ -116,6 +117,7 @@
                @foreach($quizes as $key=>$data)
                <tr>
                    <td>{{++$key}}</td>
+                   <td>{{$data->course->course_title}}</td>
                    <td>{{$data->quiz_name}}</td>
                    <td>{{$data->description}} </td>
                    <td>{{$data->quiz_date}} </td>

@@ -12,7 +12,8 @@ class QuizController extends Controller
     public function index()
     {
         $courses=Course::all();
-        $quizes=Quize::with('course')->paginate(5);
+        $quizes=Quize::get();
+
         return view('backend.pages.quiz.create',compact('quizes','courses'));
     }
 

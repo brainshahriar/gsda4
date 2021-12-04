@@ -10,25 +10,20 @@
     </ul>
   </div>
   <!-- Card -->
-  
-
   @foreach($questions as $index=>$item)
   <h3>{{$item->course->course_title}}</h3>
   <hr>
   <h5>{{ $index+1 }}.{{$item->question}}</h5> 
-  <ol   class="ul-list"  style="list-style-type: lower-alpha;" >
-
-    <li>&nbsp;<input type="radio" {{$item->options==$item->answer ? 'checked' : ''}} />
-    @foreach ($options as $opt)
-    <li value="{{ $opt }}">{{ ucwords($opt) }}</li>        
+  <td >
+    <a class="btn btn-success pull-right" id="delete" href="/question/delete/{{$item->id}}"><i class="fas fa-trash"></i></a>
+  </td>
+  <ol class="ul-list"  style="list-style-type: lower-alpha;" >
+      @foreach ($options as $opt)
+    <li>&nbsp;<input type="radio" {{$opt==$item->answer ? 'checked' : ''}} value="{{$opt}}" />
+    {{$opt}}     
     @endforeach
-    
     </li>
-   
-
-    
   </ol>
-
   @endforeach
     <!-- Modal -->
 </div>
