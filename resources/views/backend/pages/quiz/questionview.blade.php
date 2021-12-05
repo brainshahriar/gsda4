@@ -17,14 +17,15 @@
   <td >
     <a class="btn btn-success pull-right" id="delete" href="/question/delete/{{$item->id}}"><i class="fas fa-trash"></i></a>
   </td>
+  @foreach ($options as $opt)
   <ol class="ul-list"  style="list-style-type: lower-alpha;" >
-      @foreach ($options as $opt)
     <li>&nbsp;<input type="radio" {{$opt==$item->answer ? 'checked' : ''}} value="{{$opt}}" />
-    {{$opt}}     
-    @endforeach
+    {{$opt}}  
     </li>
   </ol>
+  @endforeach
   @endforeach
     <!-- Modal -->
 </div>
 @endsection
+

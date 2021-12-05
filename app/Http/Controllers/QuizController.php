@@ -12,7 +12,7 @@ class QuizController extends Controller
     public function index()
     {
         $courses=Course::all();
-        $quizes=Quize::get();
+        $quizes=Quize::paginate(5);
 
         return view('backend.pages.quiz.create',compact('quizes','courses'));
     }

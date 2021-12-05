@@ -390,10 +390,6 @@ Route::get('generate-sitemap', function(){
 
 
 
-//coupon 
-
-Route::get('/admin/coupon', [CouponController::class,'create'])->name('coupon')->middleware('is_admin');
-
 
 //flipcard
 
@@ -406,11 +402,10 @@ Route::get('flipcard_view', [FlicardController::class,'flipcard_frontend'])->nam
 
 Route::post('flipcard-ajax/store', [FlicardController::class,'storeflipcard']);
 
-
-
 //quiz Controller
 
 Route::get('quizes', [QuizController::class,'index'])->name('quiz');
+
 Route::post('store/quiz', [QuizController::class,'store'])->name('quiz-store');
 
 Route::get('/quize/delete/{question_id}', [QuizController::class,'destroy']);;
@@ -423,3 +418,13 @@ Route::get('/question/view/{question_id}', [QuestionController::class,'questionV
 
 Route::get('/question/delete/{question_id}', [QuestionController::class,'destroy']);;
 
+
+
+
+
+
+//coupon 
+
+Route::get('/admin/coupon', [CouponController::class,'create'])->name('coupon')->middleware('is_admin');
+
+Route::post('/admin/coupon/store', [CouponController::class,'store'])->name('coupon-store')->middleware('is_admin');

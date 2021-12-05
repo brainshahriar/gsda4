@@ -94,7 +94,7 @@
     
     
     <div class="col-md-12">
- 
+        {{$quizes->links()}}
         <table class="table table-bordered" id="datatables">
            <thead>
                <tr>

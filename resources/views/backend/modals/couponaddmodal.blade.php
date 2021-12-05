@@ -9,27 +9,24 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('coupon-store') }}" method="POST">
                     @csrf
 
                     <div class="form-group">
                         <label for="vimeo_id">Coupon Name</label>
                         <input type="number" class="form-control" name="coupon_name" aria-describedby="coupon_name"
                                placeholder="Coupon Name">
-
                     </div>
                     <div class="form-group">
                         <label class="form-control-label">Discount (%): <span class="tx-danger">*</span></label>
-                        <input class="form-control" type="text" name="coupon_discount" value="{{ old('coupon_discount') }}" placeholder="Enter Discount" min="1" max="99">
+                        <input class="form-control" type="text" name="coupon_discount" placeholder="Enter Discount" min="1" max="99">
 
                     </div>
                     <div class="form-group">
                         <label for="lesson_title">Validity</label>
                         <input type="date" class="form-control" name="coupon_validity" aria-describedby="coupon_validity"
                                placeholder="Validity">
-
                     </div>
-
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

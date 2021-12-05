@@ -12,15 +12,7 @@
                 <form action="{{ route('question-store') }}" method="POST">
                     @csrf
 
-                    <div class="form-group">
-                        <label for="custom select">Select Course</label>
-                        <select class="form-control" name="elearning_course_id">
-                          <option label="Choose Course"></option>
-                          <?php foreach ($courses as $item): ?>
-                            <option value="{{$item->id}}">{{$item->course_title}}</option>
-                          <?php endforeach; ?>
-                        </select>
-                      </div>
+                    <input type="hidden" name="elearning_course_id" value="{{ $data->elearning_course_id }}">
 
                       <div class="form-group">
                         <label for="custom select">Select Quiz Name</label>

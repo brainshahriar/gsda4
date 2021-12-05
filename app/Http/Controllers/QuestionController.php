@@ -14,10 +14,8 @@ class QuestionController extends Controller
     {
 
        $data=$request->all();
-      Question::create($data);
-       
-
-      $notification=array(
+        Question::create($data);
+        $notification=array(
         'message'=>'Success',
         'alert-type'=>'success'
     );

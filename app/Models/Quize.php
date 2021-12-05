@@ -12,6 +12,6 @@ class Quize extends Model
     protected $guarded=[];
 
     public function course(){
-        return $this->belongsTo(Course::class,'course_id');
+        return $this->belongsTo(Course::class,'elearning_course_id');
       }
 }
