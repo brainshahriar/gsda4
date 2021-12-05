@@ -428,3 +428,5 @@ Route::get('/question/delete/{question_id}', [QuestionController::class,'destroy
 Route::get('/admin/coupon', [CouponController::class,'create'])->name('coupon')->middleware('is_admin');
 
 Route::post('/admin/coupon/store', [CouponController::class,'store'])->name('coupon-store')->middleware('is_admin');
+
+Route::get('/admin/coupon/delete/{coupon_id}', [CouponController::class,'destroy'])->middleware('is_admin');

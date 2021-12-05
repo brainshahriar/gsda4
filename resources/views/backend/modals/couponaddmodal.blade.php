@@ -14,7 +14,7 @@
 
                     <div class="form-group">
                         <label for="vimeo_id">Coupon Name</label>
-                        <input type="number" class="form-control" name="coupon_name" aria-describedby="coupon_name"
+                        <input type="text" class="form-control" name="coupon_name" aria-describedby="coupon_name"
                                placeholder="Coupon Name">
                     </div>
                     <div class="form-group">

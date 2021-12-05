@@ -34,38 +34,34 @@
               </tr>
             </thead>
             <tbody>
-               {{-- @foreach ($faqs as $row)
-
+              @foreach ($coupons as $key=>$item)
               <tr>
-                <td>{{$loop->index+1}}</td>
-                <td class="user_name">
-                    {{$row->subject}}
-                </td>
-                <td>
-                    <textarea name="" id="" cols="30" disabled rows="2">{!!$row->description !!}</textarea>
-                </td>
+                  <td>{{ ++$key }}</td>
+                  <td>{{ $item->coupon_name }}</td>
+                  <td>{{ $item->coupon_discount }}%</td>
+                  <td>
+                      {{ Carbon\Carbon::parse($item->coupon_validity)->format('D,d F Y') }}
+                  </td>
+                  <td>
+                      @if($item->coupon_validity >=  Carbon\Carbon::now()->format('Y-m-d') )
 
-                <td>
-                    {{$row->video_url}}
-                </td>
-                <td>
-                    <img src="{{asset( $row->image) }}" alt="">
-                </td>
-                <td>
-                    <a href="#" data-toggle="modal" data-target="#FaqEdit{{$row->id}}"><i class="fas fa-edit"></i></a>
+                        <span class="badge badge-pill badge-success">Valid</span>
 
-                  <a  href="/admin/delete-faq/{{$row->id}}" id="delete"><i class="fas fa-trash"></i></a>
-                      @include('backend.modals.trainereditmodal')
+                      @else
 
-                </td>
+                        <span class="badge badge-pill badge-danger">Invalid</span>
 
+                      @endif
+                    </td>
+             <td>
+                 {{-- <a href="{{ url('admin/coupon-edit/'.$item->id) }}" class="btn btn-primary" title="Edit Data"><i class="fa fa-pencil"></i></a> --}}
+                 <a href="{{ url('admin/coupon/delete/'.$item->id) }}" class="btn btn-danger" title="delete data" id="delete"><i class="fa fa-trash"></i></a>
+             </td>
+                </tr>
+              @endforeach
+    
 
-
-
-              </tr>
-
-              @endforeach --}}
-            </tbody>
+          </tbody>
           </table>
         </div>
 
