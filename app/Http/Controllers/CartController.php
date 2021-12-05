@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\MainCategory;
 use App\Models\Coupon;
 use Carbon\Carbon;
+use Session;
 use Auth;
 
 class CartController extends Controller
@@ -151,8 +152,6 @@ class CartController extends Controller
               return view('frontend.users.buynow')->with('cart_deleted','Course has been deleted from cart successfully!');
             }
             public function couponApply(Request $request){
-
-           
               $coupon = Coupon::where('coupon_name',$request->coupon_name)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
               if ($coupon) {
                   Session::put('coupon',[

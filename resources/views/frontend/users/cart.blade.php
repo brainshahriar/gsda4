@@ -165,6 +165,9 @@
 
                 </div>
                 <br>
+                @if(Session::has('coupon'))
+
+                @else
                 <table class="table" id="couponField">
                     <thead>
                         <tr>
@@ -187,6 +190,7 @@
                             </tr>
                     </tbody><!-- /tbody -->
                 </table><!-- /table -->
+                @endif
             
 
                 <form id="paymentform" class="hidden" action="{{route('payment')}}" method="post">
@@ -233,7 +237,7 @@
             });
 
         </script>
- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
  <script>  function applyCoupon()
      {
          var coupon_name=$('#coupon_name').val();
@@ -249,7 +253,7 @@
                       //  start message
                       const Toast = Swal.mixin({
                          toast: true,
-                         position: 'top-end',
+                         position: 'top-bottom',
                          showConfirmButton: false,
                          timer: 3000
                        })

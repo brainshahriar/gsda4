@@ -36,7 +36,6 @@
     });
 </script>
 
-<script src="{{ asset('frontend') }}/assets/js/sweetalert2@8.js"></script>
 
 
 
@@ -50,8 +49,6 @@
 	$(".video-play1").modalVideo();
 </script>
 <script type="text/javascript" src="{{ asset('venobox') }}/venobox/venobox.min.js"></script>
-
-
 <script>
 	$(document).ready(function(){
 		$('.venobox').venobox({
@@ -64,6 +61,7 @@
 	});
 </script>
 
+<script src="{{ asset('common') }}/sweetalert2@8.js"></script>
 <script type="text/javascript" src="{{ asset('backend') }}/lib/toastr/toastr.min.js"></script>
 
 <script>
