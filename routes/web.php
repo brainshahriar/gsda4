@@ -432,3 +432,5 @@ Route::post('/admin/coupon/store', [CouponController::class,'store'])->name('cou
 Route::get('/admin/coupon/delete/{coupon_id}', [CouponController::class,'destroy'])->middleware('is_admin');
 
 Route::post('/coupon-apply', [CartController::class,'couponApply'])->name('coupons');
+
+Route::get('/coupon/calculation', [CartController::class,'couponCalcaultion']);

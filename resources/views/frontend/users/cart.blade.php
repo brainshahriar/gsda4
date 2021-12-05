@@ -238,7 +238,8 @@
 
         </script>
  {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
- <script>  function applyCoupon()
+ <script> 
+function applyCoupon()
      {
          var coupon_name=$('#coupon_name').val();
          var t_amount=$('#t_amount').val();
@@ -273,7 +274,25 @@
                 }
                  });
      }
+
+     function couponCalculation(){
+         $.ajax({
+             type:'GET',
+             url:"{{ url('/coupon/calculation') }}",
+             dataType:'json',
+             success:function(data){
+                 if(data.total){
+                     
+                 }else{
+                     alert(data.total_amount)
+                 }
+             }
+         });
+     }
+     couponCalculation();
         </script>
+
+
     @endpush
 
 
