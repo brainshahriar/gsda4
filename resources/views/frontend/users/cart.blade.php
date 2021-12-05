@@ -80,7 +80,6 @@
                                     <td>{{$row->course->course_category->mcategory_title}}</td>
                                     <td>
                                         <del>{{$row->course->regular_price}}৳</del>
-
                                     </td>
                                     <td>{{$row->course->sale_price}}৳</td>
 
@@ -91,7 +90,6 @@
                                          } else {
                                             $price += $row->course->regular_price;
                                         }
-
                                         ?>
                                         <a id="delete" href="/carts/delete/{{$row->id}}"><i class="fa fa-trash"></i></a>
                                     </td>
@@ -189,14 +187,14 @@
                             </tr>
                     </tbody><!-- /tbody -->
                 </table><!-- /table -->
+            
 
                 <form id="paymentform" class="hidden" action="{{route('payment')}}" method="post">
                     @csrf
-                    <input type="hidden" name="amount" value="{{isset($total)?$total:''}}">
+                    <input type="hidden" id="t_amount" name="amount" value="{{isset($total)?$total:''}}">
                     <input type="hidden" name="email" value="{{isset(Auth::user()->email)?Auth::user()->email:''}}">
                     <input type="hidden" name="name" value="{{isset(Auth::user()->name)?Auth::user()->name:''}}">
                     <input type="hidden" name="phone" value="{{isset(Auth::user()->phone)?Auth::user()->phone:''}}">
-
                     @if($total > 0 )
                         <button type="submit" class="text-center btn float-right">Procceed To Payment</button>
                     @else
@@ -234,6 +232,43 @@
 
             });
 
+        </script>
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <script>  function applyCoupon()
+     {
+         var coupon_name=$('#coupon_name').val();
+         var t_amount=$('#t_amount').val();
+         
+        $.ajax({
+            type:'POST',
+            dataType:'json',
+            data:{coupon_name:coupon_name,t_amount:t_amount},
+            url: "{{ url('/coupon-apply') }}",  
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},    
+            success:function(data){
+                      //  start message
+                      const Toast = Swal.mixin({
+                         toast: true,
+                         position: 'top-end',
+                         showConfirmButton: false,
+                         timer: 3000
+                       })
+                      if($.isEmptyObject(data.error)){
+                           Toast.fire({
+                             type: 'success',
+                             title: data.success
+                           })
+                      }else{
+                          $('#coupon_name').val('');
+                            Toast.fire({
+                               type: 'error',
+                               title: data.error
+                           })
+            }
+                     //  end message
+                }
+                 });
+     }
         </script>
     @endpush
 

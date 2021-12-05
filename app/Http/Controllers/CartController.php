@@ -10,10 +10,13 @@ use App\Models\System;
 use App\Models\CourseCategory;
 use App\Models\User;
 use App\Models\MainCategory;
+use App\Models\Coupon;
+use Carbon\Carbon;
 use Auth;
 
 class CartController extends Controller
 {
+
     public function index()
 
 
@@ -87,7 +90,7 @@ class CartController extends Controller
         {
           $cart = Cart::find($id);
 
-          $cart->delete();
+          $cart->delete(); 
           return back()->with('cart_deleted','Course has been deleted from cart successfully!');
         }
         public function BuyNow(Request $request)
@@ -131,8 +134,6 @@ class CartController extends Controller
                             $cart->save();
                           }
 
-
-
                           $course_categories= CourseCategory::all();
                           $main_categories= MainCategory::all();
 
@@ -146,8 +147,24 @@ class CartController extends Controller
             public function deleteBuy($id)
             {
               $cart = Cart::find($id);
-
               $cart->delete();
               return view('frontend.users.buynow')->with('cart_deleted','Course has been deleted from cart successfully!');
             }
+            public function couponApply(Request $request){
+
+           
+              $coupon = Coupon::where('coupon_name',$request->coupon_name)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
+              if ($coupon) {
+                  Session::put('coupon',[
+                      'coupon_name' => $coupon->coupon_name,
+                      'coupon_discount' => $coupon->coupon_discount,
+                      'discount_amount' => round((int)($request->t_amount) * $coupon->coupon_discount/100),
+                      'total_amount' => round((int)($request->t_amount) - round((int)($request->t_amount)) * $coupon->coupon_discount/100),
+                  ]);
+                  return response()->json(['success' => 'Coupon Applied']);
+              }else {
+                  return response()->json(['error' => 'Invalid Coupon']);
+              }
+          }
+
 }

@@ -36,6 +36,8 @@
     });
 </script>
 
+<script src="{{ asset('frontend') }}/assets/js/sweetalert2@8.js"></script>
+
 
 
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 use App\Models\Coupon;
+use App\Models\Cart;
 
 class CouponController extends Controller
 {
@@ -17,6 +18,7 @@ class CouponController extends Controller
     }
     public function store(Request $request){
 
+        
         Coupon::insert([
             'coupon_name'=>strtoupper($request->coupon_name),
             'coupon_discount'=>$request->coupon_discount,
@@ -38,4 +40,6 @@ class CouponController extends Controller
         );
         return Redirect()->route('coupon')->with($notification);
     }
+
+
 }
