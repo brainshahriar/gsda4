@@ -242,6 +242,8 @@ function applyCoupon()
             url: "{{ url('/coupon-apply') }}",  
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},    
             success:function(data){
+                couponCalculation();
+                $('#couponField').hide();
                       //  start message
                       const Toast = Swal.mixin({
                          toast: true,
@@ -275,20 +277,7 @@ function applyCoupon()
                  if(data.total){
                      $('#couponCalField').html(`
                      
-                     <tr>
-                                    <td>
-                                        <span class="font-weight-bold">Course Price</span>
-                                    </td>
-                                    <td></td>
-                                    <td>{{$price}}৳</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="font-weight-bold">Course Price</span>
-                                    </td>
-                                    <td></td>
-                                    <td>{{$price}}৳</td>
-                                </tr>
+                     
                      <tr>
                                     <td>
                                         <span class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">Total</span>
@@ -305,8 +294,33 @@ function applyCoupon()
                      $('#couponCalField').html(`
                      
                      <tr>
+                                   <td>
+                                        <span class="font-weight-bold" style="color:#ca2128;">Previous Total</span>
+                                    </td>
+                                    <td>=</td>
+                                    <td class="font-weight-bold" style="color:#ca2128;">{{$total}}</td>
+                                </tr>
+                     <tr>
                                     <td>
-                                        <span class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">Total</span>
+                                        <span class="font-weight-bold">Coupon Name</span>
+                                    </td>
+                                    <td>=</td>
+                                    <td class="font-weight-bold" style="color:green;">${data.coupon_name} &nbsp;
+                                        <button onclick="couponRemove()" type="submit"><i class="fa fa-times"></i></button>
+         
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Discount Amount</span>
+                                    </td>
+                                    <td>=</td>
+                                    <td class="font-weight-bold" style="color:green;">${data.discount_amount}৳</td>
+                                </tr>
+                     <tr>
+                                    <td>
+                                        <span class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">Grand Total</span>
                                     </td>
                                     <td>=</td>
                                     <td class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">${data.total_amount}
@@ -321,6 +335,11 @@ function applyCoupon()
          });
      }
      couponCalculation();
+
+
+     function couponRemove(){
+         alert('ok');
+     }
         </script>
 
 
