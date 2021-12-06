@@ -117,7 +117,7 @@
                                     <th>Price</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="couponCalField">
                                 <tr>
                                     <td>
                                         <span class="font-weight-bold">Course Price</span>
@@ -148,16 +148,7 @@
                                         {{$total_price_vat}}৳
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <span class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">Total</span>
-                                    </td>
-                                    <td>=</td>
-                                    <td class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">{{$total}}
-                                        ৳
-                                    </td>
 
-                                </tr>
 
                             </tbody>
                         </table>
@@ -282,9 +273,49 @@ function applyCoupon()
              dataType:'json',
              success:function(data){
                  if(data.total){
+                     $('#couponCalField').html(`
                      
+                     <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Course Price</span>
+                                    </td>
+                                    <td></td>
+                                    <td>{{$price}}৳</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Course Price</span>
+                                    </td>
+                                    <td></td>
+                                    <td>{{$price}}৳</td>
+                                </tr>
+                     <tr>
+                                    <td>
+                                        <span class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">Total</span>
+                                    </td>
+                                    <td>=</td>
+                                    <td class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">{{$total}}
+                                        ৳
+                                    </td>
+
+                                </tr>
+                     
+                     `)
                  }else{
-                     alert(data.total_amount)
+                     $('#couponCalField').html(`
+                     
+                     <tr>
+                                    <td>
+                                        <span class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">Total</span>
+                                    </td>
+                                    <td>=</td>
+                                    <td class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">${data.total_amount}
+                                        ৳
+                                    </td>
+
+                                </tr>
+                     
+                     `)
                  }
              }
          });
