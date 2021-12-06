@@ -253,7 +253,10 @@ function applyCoupon()
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},    
             success:function(data){
                 couponCalculation();
-                $('#couponField').hide();
+                if(data.validity==false)
+                {
+                    $('#couponField').show();
+                }
                       //  start message
                       const Toast = Swal.mixin({
                          toast: true,
@@ -293,6 +296,36 @@ function applyCoupon()
                      
                      
                      <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Course Price</span>
+                                    </td>
+                                    <td></td>
+                                    <td>{{$price}}৳</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Tax(10%)</span>
+                                    </td>
+                                    <td></td>
+                                    <td>{{($price*10)/100}}৳</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Vat(15%)</span>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <?php
+                                        $total_price = 0;
+                                        $total_price_vat = 0;
+                                        $total_price = ($price + (($price * 10) / 100));
+                                        $total_price_vat = ($total_price * 15) / 100;
+                                        $total = $total_price + $total_price_vat;
+                                        ?>
+                                        {{$total_price_vat}}৳
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>
                                         <span class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">Total</span>
                                     </td>
