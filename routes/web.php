@@ -433,4 +433,6 @@ Route::get('/admin/coupon/delete/{coupon_id}', [CouponController::class,'destroy
 
 Route::post('/coupon-apply', [CartController::class,'couponApply'])->name('coupons');
 
-Route::get('/coupon/calculation', [CartController::class,'couponCalcaultion']);
+Route::post('/coupon/calculation', [CartController::class,'couponCalcaultion']);
+
+Route::get('/coupon-remove', [CartController::class,'couponRemove']);

@@ -166,10 +166,11 @@ class CartController extends Controller
               }
           }
               //coupon calculation
-          public function couponCalcaultion(){
+          public function couponCalcaultion(Request $request){
+
             if (Session::has('coupon')) {
                 return response()->json(array(
-                    'subtotal' => session()->get('coupon')['total_amount'],
+                    'subtotal' => round((int)($request->t_amount)),
                     'coupon_name' => session()->get('coupon')['coupon_name'],
                     'coupon_discount' => session()->get('coupon')['coupon_discount'],
                     'discount_amount' => session()->get('coupon')['discount_amount'],
@@ -178,9 +179,14 @@ class CartController extends Controller
             }
             else {
                 return response()->json(array(
-                    'total' => session()->get('coupon')['total_amount'],
+                    'total' => round((int)($request->t_amount)),
                 ));
             }
+        }
+        public function couponRemove()
+        {
+          Session::forget('coupon');
+          return response()->json(['success' => 'Coupon Successfully Removed']);
         }
 
 }

@@ -148,6 +148,16 @@
                                         {{$total_price_vat}}৳
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">Total</span>
+                                    </td>
+                                    <td>=</td>
+                                    <td class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">{{$total}}
+                                        ৳
+                                    </td>
+
+                                </tr>
 
 
                             </tbody>
@@ -269,11 +279,15 @@ function applyCoupon()
      }
 
      function couponCalculation(){
+        var t_amount=$('#t_amount').val();
          $.ajax({
-             type:'GET',
+             type:'POST',
              url:"{{ url('/coupon/calculation') }}",
+             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},   
              dataType:'json',
+             data:{t_amount:t_amount},
              success:function(data){
+                $('#coupon_name').val('');
                  if(data.total){
                      $('#couponCalField').html(`
                      
@@ -337,11 +351,42 @@ function applyCoupon()
      couponCalculation();
 
 
-     function couponRemove(){
-         alert('ok');
-     }
         </script>
-
+<script>
+    
+     function couponRemove(){
+       $.ajax({
+           type:'GET',
+           url: "{{ url('/coupon-remove') }}",
+           dataType:'json',
+           success:function(data){
+               couponCalculation();
+               $('#couponField').show();
+               // $('#couponField').css("display","");
+               $('#coupon_name').val('');
+               //  start message
+               const Toast = Swal.mixin({
+                       toast: true,
+                       position: 'top-bottom',
+                       showConfirmButton: false,
+                       timer: 3000
+                     })
+                    if($.isEmptyObject(data.error)){
+                         Toast.fire({
+                           type: 'success',
+                           title: data.success
+                         })
+                    }else{
+                          Toast.fire({
+                             type: 'error',
+                             title: data.error
+                         })
+                    }
+                   //  end message
+           }
+       });
+   }
+</script>
 
     @endpush
 
