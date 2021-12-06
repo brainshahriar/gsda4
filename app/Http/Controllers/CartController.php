@@ -153,15 +153,13 @@ class CartController extends Controller
             }
             public function couponApply(Request $request){
 
-              // dd($request->total_amount);
               $coupon = Coupon::where('coupon_name',$request->coupon_name)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
               if ($coupon) {
                   Session::put('coupon',[
                       'coupon_name' => $coupon->coupon_name,
                       'coupon_discount' => $coupon->coupon_discount,
                       'discount_amount' => round((int)($request->t_amount) * $coupon->coupon_discount/100),
-                      'total_amount' => round((int)($request->t_amount) - round((int)($request->t_amount)) * $coupon->coupon_discount/100),
-        
+                      'total_amount' => round((int)($request->total_amount) - round((int)($request->t_amount) * $coupon->coupon_discount/100)),
                   ]);
                   return response()->json(['success' => 'Coupon Applied']);
               }else {

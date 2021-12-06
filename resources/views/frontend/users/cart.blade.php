@@ -197,7 +197,7 @@
                 <form id="paymentform" class="hidden" action="{{route('payment')}}" method="post">
                     @csrf
                     <input type="hidden" id="total_amount" name="amount" value="{{isset($total)?$total:''}}">
-                    <input type="hidden" id="t_amount" name="amount" value="{{isset($price)?$price:''}}">
+                    <input type="hidden" id="t_amount" name="price" value="{{isset($price)?$price:''}}">
                     <input type="hidden" name="email" value="{{isset(Auth::user()->email)?Auth::user()->email:''}}">
                     <input type="hidden" name="name" value="{{isset(Auth::user()->name)?Auth::user()->name:''}}">
                     <input type="hidden" name="phone" value="{{isset(Auth::user()->phone)?Auth::user()->phone:''}}">
@@ -245,6 +245,7 @@ function applyCoupon()
      {
          var coupon_name=$('#coupon_name').val();
          var t_amount=$('#t_amount').val();
+         var total_amount=$('#total_amount').val();
          
         $.ajax({
             type:'POST',
