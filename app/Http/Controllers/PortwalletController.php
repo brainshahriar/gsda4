@@ -74,7 +74,8 @@ class PortwalletController extends Controller
     }
 
     public function index(Request $request){
-        dd($request->session()->'');
+        dd($request->session()->all());
+        // $request->session()->all();
 
         /*$validator = Validator::make($request->all(), [
             'amount'    => 'required',
