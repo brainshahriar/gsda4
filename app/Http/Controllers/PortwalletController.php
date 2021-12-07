@@ -74,7 +74,14 @@ class PortwalletController extends Controller
     }
 
     public function index(Request $request){
-        dd($request->session()->all());
+
+        if(Session::has('coupon'))
+        {
+            $amount=Session::get('coupon')['total_amount'];
+        }
+        else{
+            $amount=floatval($request->amount);
+        }
         // $request->session()->all();
 
         /*$validator = Validator::make($request->all(), [
@@ -122,10 +129,12 @@ class PortwalletController extends Controller
         * Your data
         */
       //  dd($request->amount);
+
        $data = array(
+           
            'order' => array(
              //'amount' => 1,
-              'amount' => floatval($request->amount),
+              'amount' => $amount,
                'currency' => 'BDT',
               // 'redirect_url' => 'https://globalskills.com.bd/portwallet/portwallet_verify_transaction/shopping_cart',
                'redirect_url' => URL::to('/portwallet/portwallet_verify_transaction/shopping_cart'),
