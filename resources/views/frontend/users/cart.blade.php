@@ -197,6 +197,7 @@
                 <form id="paymentform" class="hidden" action="{{route('payment')}}" method="post">
                     @csrf
                     <input type="hidden" id="total_amount" name="amount" value="{{isset($total)?$total:''}}">
+                    {{-- <input type="hidden" id="total_amount" name="session" value="{{ session()->get('coupon') }}"> --}}
                     <input type="hidden" id="t_amount" name="price" value="{{isset($price)?$price:''}}">
                     <input type="hidden" name="email" value="{{isset(Auth::user()->email)?Auth::user()->email:''}}">
                     <input type="hidden" name="name" value="{{isset(Auth::user()->name)?Auth::user()->name:''}}">
@@ -362,20 +363,10 @@ function applyCoupon()
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="font-weight-bold">Discount Amount</span>
+                                        <span class="font-weight-bold">Discounted Amount</span>
                                     </td>
                                     <td>=</td>
                                     <td class="font-weight-bold" style="color:green;">${data.discount_amount}৳</td>
-                                </tr>
-                     <tr>
-                                    <td>
-                                        <span class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">New Course Price</span>
-                                    </td>
-                                    <td>=</td>
-                                    <td class="font-weight-bold" style="color:#ca2128; text-transform:uppercase;">${data.total_amount}
-                                        ৳
-                                    </td>
-
                                 </tr>
                                 <tr>
                                     <td>
