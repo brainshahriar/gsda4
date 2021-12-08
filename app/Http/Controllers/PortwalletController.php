@@ -80,7 +80,7 @@ class PortwalletController extends Controller
             $amount=Session::get('coupon')['total_amount'];
         }
         else{
-            $amount=floatval($request->amount);
+            $amount=round($request->amount);
         }
         // $request->session()->all();
 
@@ -134,7 +134,7 @@ class PortwalletController extends Controller
            
            'order' => array(
              //'amount' => 1,
-              'amount' => $amount,
+              'amount' => round($amount),
                'currency' => 'BDT',
               // 'redirect_url' => 'https://globalskills.com.bd/portwallet/portwallet_verify_transaction/shopping_cart',
                'redirect_url' => URL::to('/portwallet/portwallet_verify_transaction/shopping_cart'),
