@@ -135,6 +135,8 @@
                 <form class="hidden" action="{{route('buy-now')}}" method="post">
                   @csrf
                   <input type="hidden" name="course_id" value="{{$course->id}}">
+                  <div><h3><i class="ti-time"></i>&nbsp;<strong class="text-danger" id="time">59:00</strong></h3><h5>minutes! left at this Price</h5></div>
+                  <br>
                   <button  class="btn">Buy Now</button>
                 </form>
                   </div>
@@ -536,6 +538,29 @@
 <!-- Content END-->
 
 <script>$(document.frmTransaction.submit());</script>
+<script>
+  function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
 
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * 59,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
+</script>
 
 @endsection

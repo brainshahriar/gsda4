@@ -20,7 +20,6 @@ class CartController extends Controller
 
     public function index()
 
-
     {
       $course_categories= CourseCategory::all();
       $main_categories= MainCategory::all();
@@ -29,12 +28,11 @@ class CartController extends Controller
     public function add_cart(Request $request)
     {
 
-
           $course_id = $request->course_id;
           $classroom_course_id=$request->classroom_course_id;
           $user_id = $request->user_id;
           $ip_address=$request->ip();
-
+          
         //session()->put('course_id', $course_id);
         $cart = Session()->get('cart');
         $cart[] = array(

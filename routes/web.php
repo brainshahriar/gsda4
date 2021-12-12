@@ -421,8 +421,6 @@ Route::get('/question/delete/{question_id}', [QuestionController::class,'destroy
 
 
 
-
-
 //coupon 
 
 Route::get('/admin/coupon', [CouponController::class,'create'])->name('coupon')->middleware('is_admin');

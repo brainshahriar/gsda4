@@ -101,7 +101,7 @@
                     </div>
                 </div>
             </div>
-
+        
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
@@ -232,8 +232,6 @@
                     //var name = $(element).text();
                     var arr2 = $.trim($(element).text());
                     name.push(arr2);
-
-
                 });
                 $('#paymentform').append('<input type="hidden" name="course_title" value=' + name + '>');
 
@@ -295,9 +293,7 @@ function applyCoupon()
              success:function(data){
                 $('#coupon_name').val('');
                  if(data.total){
-                     $('#couponCalField').html(`
-                     
-                     
+                     $('#couponCalField').html(`            
                      <tr>
                                     <td>
                                         <span class="font-weight-bold">Course Price</span>
