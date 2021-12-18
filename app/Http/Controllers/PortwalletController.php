@@ -115,7 +115,7 @@ class PortwalletController extends Controller
         }
 
         PortWallet::setApiMode("live");
-//N.B.: API mode should be set first before creating an instance of PortWalletClient
+//N.B.: API mode should be set first be  fore creating an instance of PortWalletClient
 
         /**
          * initiate the PortWallet client

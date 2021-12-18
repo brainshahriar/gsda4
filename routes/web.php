@@ -434,3 +434,4 @@ Route::post('/coupon-apply', [CartController::class,'couponApply'])->name('coupo
 Route::post('/coupon/calculation', [CartController::class,'couponCalcaultion']);
 
 Route::get('/coupon-remove', [CartController::class,'couponRemove']);
+

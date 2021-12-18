@@ -7,6 +7,7 @@
 
 
 
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
   .img i {
@@ -135,7 +136,7 @@
                 <form class="hidden" action="{{route('buy-now')}}" method="post">
                   @csrf
                   <input type="hidden" name="course_id" value="{{$course->id}}">
-                  <div><h3><i class="ti-time"></i>&nbsp;<strong class="text-danger" id="time">59:00</strong></h3><h5>minutes! left at this Price</h5></div>
+                  <div><h4><i class="ti-time"></i>&nbsp;<strong class="text-danger" id="quiz-time-left"></strong></h4><h5>minutes! left at this Price</h5></div>
                   <br>
                   <button  class="btn">Buy Now</button>
                 </form>
@@ -537,7 +538,7 @@
 </div>
 <!-- Content END-->
 
-<script>$(document.frmTransaction.submit());</script>
+{{-- <script>$(document.frmTransaction.submit());</script>
 <script>
   function startTimer(duration, display) {
     var timer = duration, minutes, seconds;
@@ -561,6 +562,65 @@ window.onload = function () {
         display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
 };
+</script> --}}
+
+<script type="text/javascript">
+  var total_seconds = 60*1 ;
+  var minutes = parseInt(total_seconds/60);
+  var seconds = parseInt(total_seconds%60);
+  function countDownTimer(){
+    if(seconds < 10){
+      seconds= "0"+ seconds ;
+    }if(minutes < 10){
+      minutes= "0"+ minutes ;
+    }  
+  document.getElementById("quiz-time-left").innerHTML
+    = "Time Left :"+minutes+"minutes"+seconds+"seconds";
+    if(total_seconds <= 0){
+      setTimeout("document.quiz.submit()",1);
+    }else{
+      total_seconds = total_seconds -1 ;
+      minutes = parseInt(total_seconds/60);
+            seconds = parseInt(total_seconds%60);
+            setTimeout("countDownTimer()",1000);
+    }
+  }
+setTimeout("countDownTimer()",1000);
+function finishpage(){
+alert("unload event detected!");
+document.quiz.submit();
+}
+window.onbeforeunload= function() {
+setTimeout('document.quiz.submit()',1);
+}
 </script>
 
+<script>
+  if (localStorage.getItem("total_seconds")) {
+ var total_seconds = localStorage.getItem("total_seconds");
+} else {
+ var total_seconds = 60 * 1;
+}
+var minutes = parseInt(total_seconds / 60);
+var seconds = parseInt(total_seconds % 60);
+
+function countDownTimer() {
+ if (seconds < 10) {
+    seconds = "0" + seconds;
+ }
+ if (minutes < 10) {
+    minutes = "0" + minutes;
+ }
+ document.getElementById("quiz-time-left").innerHTML = "" + minutes + ":" + seconds + "";
+ if (total_seconds <= 0) {
+    setTimeout("document.quiz.submit()", 1);
+ } else {
+    total_seconds = total_seconds - 1;
+    minutes = parseInt(total_seconds / 60);
+    seconds = parseInt(total_seconds % 60);
+    localStorage.setItem("total_seconds", total_seconds)
+    setTimeout("countDownTimer()", 1000);
+ }
+}
+</script>
 @endsection
