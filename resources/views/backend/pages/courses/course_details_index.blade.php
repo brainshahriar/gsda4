@@ -7,7 +7,6 @@
 
 
 
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
   .img i {
@@ -32,6 +31,17 @@
   margin-left:-7%;
   color:green;
 }
+
+.bcsayeed {
+  font-size: 24px;
+  border:10px solid black;
+  padding: 1rem 0.5rem;
+  min-height: 3em;
+  resize: both;
+  background: #ffd73e33;
+  border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cstyle%3Epath%7Banimation:stroke 5s infinite linear%3B%7D%40keyframes stroke%7Bto%7Bstroke-dashoffset:776%3B%7D%7D%3C/style%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232d3561' /%3E%3Cstop offset='25%25' stop-color='%23c05c7e' /%3E%3Cstop offset='50%25' stop-color='%23f3826f' /%3E%3Cstop offset='100%25' stop-color='%23ffb961' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3' stroke-dasharray='388'/%3E %3C/svg%3E") 1;
+}
+
 </style>
 
 <!-- Content -->
@@ -136,7 +146,9 @@
                 <form class="hidden" action="{{route('buy-now')}}" method="post">
                   @csrf
                   <input type="hidden" name="course_id" value="{{$course->id}}">
-                  <div><h4><i class="ti-time"></i>&nbsp;<strong class="text-danger" id="quiz-time-left"></strong></h4><h5>minutes! left at this Price</h5></div>
+                  <div class="bcsayeed">
+                    <h4><i class="ti-time"></i>&nbsp;<strong class="text-danger" id="quiz-time-left"></strong></h4><h5>minutes! left at this Price</h5>
+                  </div>
                   <br>
                   <button  class="btn">Buy Now</button>
                 </form>
@@ -565,7 +577,7 @@ window.onload = function () {
 </script> --}}
 
 <script type="text/javascript">
-  var total_seconds = 60*1 ;
+  var total_seconds = 60 * 1 ;
   var minutes = parseInt(total_seconds/60);
   var seconds = parseInt(total_seconds%60);
   function countDownTimer(){
@@ -590,6 +602,7 @@ function finishpage(){
 alert("unload event detected!");
 document.quiz.submit();
 }
+
 window.onbeforeunload= function() {
 setTimeout('document.quiz.submit()',1);
 }
@@ -622,5 +635,10 @@ function countDownTimer() {
     setTimeout("countDownTimer()", 1000);
  }
 }
+function clearCountdown() {
+    sessionStorage.removeItem("total_seconds")
+};
+
+window.onunload = clearCountdown();
 </script>
 @endsection
