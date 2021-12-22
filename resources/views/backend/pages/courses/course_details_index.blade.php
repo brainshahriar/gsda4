@@ -38,7 +38,6 @@
   padding: 1rem 0.5rem;
   min-height: 3em;
   resize: both;
-  background: #ffd73e33;
   border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cstyle%3Epath%7Banimation:stroke 5s infinite linear%3B%7D%40keyframes stroke%7Bto%7Bstroke-dashoffset:776%3B%7D%7D%3C/style%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232d3561' /%3E%3Cstop offset='25%25' stop-color='%23c05c7e' /%3E%3Cstop offset='50%25' stop-color='%23f3826f' /%3E%3Cstop offset='100%25' stop-color='%23ffb961' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3' stroke-dasharray='388'/%3E %3C/svg%3E") 1;
 }
 
@@ -147,7 +146,7 @@
                   @csrf
                   <input type="hidden" name="course_id" value="{{$course->id}}">
                   <div class="bcsayeed">
-                    <h4><i class="ti-time"></i>&nbsp;<strong class="text-danger" id="quiz-time-left"></strong></h4><h5>minutes! left at this Price</h5>
+                    <h4><img src="{{ asset('alarm.gif') }}" style="height: 50px; width:50px;"/>&nbsp;<strong class="text-danger" id="quiz-time-left"></strong></h4><h5>minutes! left at this Price</h5>
                   </div>
                   <br>
                   <button  class="btn">Buy Now</button>
@@ -528,7 +527,6 @@
 
               </div><!-- /.product-add-review -->
 
-
             </div>
 
           </div>
@@ -577,7 +575,7 @@ window.onload = function () {
 </script> --}}
 
 <script type="text/javascript">
-  var total_seconds = 60 * 1 ;
+  var total_seconds = 60 * 60;
   var minutes = parseInt(total_seconds/60);
   var seconds = parseInt(total_seconds%60);
   function countDownTimer(){
@@ -612,7 +610,7 @@ setTimeout('document.quiz.submit()',1);
   if (localStorage.getItem("total_seconds")) {
  var total_seconds = localStorage.getItem("total_seconds");
 } else {
- var total_seconds = 60 * 1;
+ var total_seconds = 60 * 60;
 }
 var minutes = parseInt(total_seconds / 60);
 var seconds = parseInt(total_seconds % 60);
@@ -633,12 +631,33 @@ function countDownTimer() {
     seconds = parseInt(total_seconds % 60);
     localStorage.setItem("total_seconds", total_seconds)
     setTimeout("countDownTimer()", 1000);
- }
-}
-function clearCountdown() {
-    sessionStorage.removeItem("total_seconds")
-};
 
-window.onunload = clearCountdown();
+ }
+
+}
+
+var myHour = new Date();
+myHour.setHours(myDate.getHours() + 1); //one hour from now
+data.push(myHour);
+localStorage.setItem('storedData', JSON.stringify(data))
+
+function checkExpiration (){ 
+    //check if past expiration date
+        var values = JSON.parse(localStorage.getItem('storedData'));
+    //check "my hour" index here
+    if (values[1] < new Date()) {
+        localStorage.removeItem("storedData")
+    }
+}
+
+// function myFunction() {
+//     var myinterval = 15*60*1000; // 15 min interval
+//     setInterval(function(){ checkExpiration(); }, myinterval );
+// }
+
+// myFunction();
 </script>
+
+
+
 @endsection
