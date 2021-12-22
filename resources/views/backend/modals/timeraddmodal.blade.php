@@ -24,9 +24,9 @@
 
 
                     <div class="form-group">
-                        <label for="question">Time Set</label>
-                        <input type="text" class="form-control" name="timer" aria-describedby="question"
-                               placeholder="Question">
+                        <label for="time">Time Set</label>
+                        <input type="text" class="form-control" name="timer" id="time"
+                               placeholder="YYYY/MM/DD H:M:S">
 
                     </div>
                     <div class="form-group">
@@ -47,3 +47,17 @@
         </div>
     </div>
 </div>
+@push('scripts')
+
+<script>
+    $(function(){
+        $('#time').datetimepicker({
+            format:'Y-MM-DD h:m:s',
+        })
+        .on('dp.change',function(ev){
+            
+        })
+    })
+</script>
+    
+@endpush

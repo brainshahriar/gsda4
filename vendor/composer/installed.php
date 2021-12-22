@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '9d162a421bc75e7cf8ef0b30d9e51691cadea06e',
+        'reference' => 'c63a352fa89419f824c591dafc2a81771ebaeb64',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -454,7 +454,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '9d162a421bc75e7cf8ef0b30d9e51691cadea06e',
+            'reference' => 'c63a352fa89419f824c591dafc2a81771ebaeb64',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -572,6 +572,15 @@
             'install_path' => __DIR__ . '/../league/oauth1-client',
             'aliases' => array(),
             'reference' => '88dd16b0cff68eb9167bfc849707d2c40ad91ddc',
+            'dev_requirement' => false,
+        ),
+        'livewire/livewire' => array(
+            'pretty_version' => 'v2.8.2',
+            'version' => '2.8.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../livewire/livewire',
+            'aliases' => array(),
+            'reference' => 'f6b1726d1068a5b7315f03dc4e58d5763b928374',
             'dev_requirement' => false,
         ),
         'mockery/mockery' => array(

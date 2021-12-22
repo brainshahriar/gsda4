@@ -145,9 +145,14 @@
                 <form class="hidden" action="{{route('buy-now')}}" method="post">
                   @csrf
                   <input type="hidden" name="course_id" value="{{$course->id}}">
-                  <div class="bcsayeed">
+                  {{-- <div class="bcsayeed">
                     <h4><img src="{{ asset('alarm.gif') }}" style="height: 50px; width:50px;"/>&nbsp;<strong class="text-danger" id="quiz-time-left"></strong></h4><h5>minutes! left at this Price</h5>
+                  </div> --}}
+                  @foreach ($timer as $item)
+                  <div data-expire="{{ Carbon\Carbon::parse($item->time)->format('Y/m/d h:m:s') }}">
+                    {{ Carbon\Carbon::parse($item->time)->format('Y/m/d h:m:s') }}
                   </div>
+                 @endforeach
                   <br>
                   <button  class="btn">Buy Now</button>
                 </form>
@@ -356,7 +361,6 @@
                                         <div class="col-sm-2">
                                           @if($lesson->preview==1)
                                           @if($lesson->video_type=="Youtube")
-
                                           <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{ $lesson->youtube_url }}" data-gall="Gallery23">
                                             <strong><i  class="fas fa-play-circle fa-2x icn pull-right" title="Play"></i></strong>
                                             </a>
@@ -366,7 +370,6 @@
                                           </a>
                                             @endif
                                             @else
-
                                           <i class="fas fa-lock pull-right" title="Lock"></i>
                                           @endif
                                         </div>

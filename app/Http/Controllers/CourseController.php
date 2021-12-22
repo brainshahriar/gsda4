@@ -14,6 +14,7 @@ use App\Models\UserEnrollment;
 use Auth;
 use App\Models\CourseReview;
 use App\Models\Trainer;
+use App\Models\Timer;
 
 
 class CourseController extends Controller
@@ -326,10 +327,11 @@ class CourseController extends Controller
     $avgRating = number_format($rating,1);
     $trainer= Trainer::where('course_id',$id)->get();
     $data=Lesson::where('course_id',$id)->sum('duration');
+    $timer=Timer::all();
 
 
 
-    return view('/backend/pages/courses.course_details_index',compact('course_details','main_categories','course_categories','course','enrolled','courseReview','avgRating','trainer','data'));
+    return view('/backend/pages/courses.course_details_index',compact('course_details','main_categories','course_categories','course','enrolled','courseReview','avgRating','trainer','data','timer'));
   }
 
   public function StoreSection(Request $request)
