@@ -305,8 +305,6 @@ class CourseController extends Controller
 
   }
 
-
-
   public function course_details_frontend($id,$slug)
   {
 

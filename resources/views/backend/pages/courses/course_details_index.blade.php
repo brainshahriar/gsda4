@@ -145,14 +145,11 @@
                 <form class="hidden" action="{{route('buy-now')}}" method="post">
                   @csrf
                   <input type="hidden" name="course_id" value="{{$course->id}}">
-                  {{-- <div class="bcsayeed">
-                    <h4><img src="{{ asset('alarm.gif') }}" style="height: 50px; width:50px;"/>&nbsp;<strong class="text-danger" id="quiz-time-left"></strong></h4><h5>minutes! left at this Price</h5>
-                  </div> --}}
-                  @foreach ($timer as $item)
-                  <div data-expire="{{ Carbon\Carbon::parse($item->time)->format('Y/m/d h:m:s') }}">
-                    {{ Carbon\Carbon::parse($item->time)->format('Y/m/d h:m:s') }}
+                  <div class="bcsayeed">
+                    <h4><img src="{{ asset('alarm.gif') }}" style="height: 50px; width:50px;"/>
+                      <br>
+                      &nbsp;<strong class="text-danger" id="demo"></strong></h4><h5> left at this Price</h5>
                   </div>
-                 @endforeach
                   <br>
                   <button  class="btn">Buy Now</button>
                 </form>
@@ -361,6 +358,7 @@
                                         <div class="col-sm-2">
                                           @if($lesson->preview==1)
                                           @if($lesson->video_type=="Youtube")
+
                                           <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{ $lesson->youtube_url }}" data-gall="Gallery23">
                                             <strong><i  class="fas fa-play-circle fa-2x icn pull-right" title="Play"></i></strong>
                                             </a>
@@ -370,6 +368,7 @@
                                           </a>
                                             @endif
                                             @else
+
                                           <i class="fas fa-lock pull-right" title="Lock"></i>
                                           @endif
                                         </div>
@@ -530,6 +529,7 @@
 
               </div><!-- /.product-add-review -->
 
+
             </div>
 
           </div>
@@ -577,7 +577,7 @@ window.onload = function () {
 };
 </script> --}}
 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
   var total_seconds = 60 * 60;
   var minutes = parseInt(total_seconds/60);
   var seconds = parseInt(total_seconds%60);
@@ -659,7 +659,56 @@ function checkExpiration (){
 // }
 
 // myFunction();
-</script>
+</script> --}}
+@foreach ($timer as $item)
+  <input type="hidden" id="time" value="{{ $item->time }}">
+@endforeach
+
+@push('scripts')
+    
+<script type="text/javascript">
+  // Set the date we're counting down to
+
+  $(document).ready(function () {
+    var t = $('#time').val();
+
+  var countDownDate = new Date(t).getTime();
+  
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+  
+    // Get today's date and time
+    var now = new Date().getTime();
+      
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+      
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+      
+    // If the count down is over, write some text 
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+
+
+});
+  </script>
+
+
+@endpush
+
+
+
 
 
 

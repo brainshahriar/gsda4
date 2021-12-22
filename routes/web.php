@@ -440,3 +440,5 @@ Route::get('/coupon-remove', [CartController::class,'couponRemove']);
 //Timer
 
 Route::get('/admin/timer', [TimerController::class,'create'])->name('timer')->middleware('is_admin');
+
+Route::post('/admin/timerstore', [TimerController::class,'storeTimer'])->name('timer-store')->middleware('is_admin');
