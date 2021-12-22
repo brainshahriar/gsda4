@@ -325,7 +325,7 @@ class CourseController extends Controller
     $avgRating = number_format($rating,1);
     $trainer= Trainer::where('course_id',$id)->get();
     $data=Lesson::where('course_id',$id)->sum('duration');
-    $timer=Timer::all();
+    $timer=Timer::where('course_id',$id)->get();
 
 
 

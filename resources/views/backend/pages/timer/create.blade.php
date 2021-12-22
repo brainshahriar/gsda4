@@ -24,6 +24,7 @@
               <tr>
                 <th>Id</th>
                 <th>Set Time</th>
+                <th>Course Name</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
@@ -36,10 +37,13 @@
                 <td class="user_name">
                     {{$row->time}}
                 </td>
+                <td class="user_name">
+                    {{$row->course->course_title}}
+                </td>
                 <td>
                     <span class="badge badge-pill badge-success"></span>
                     @if($row->status=='1')
-                    <a href="{{ url('/admin/review-approve/'.$row->id) }}" class="btn btn-sm btn-primary">Inactive</a>
+                    <a href="{{ url('/admin/active-approve/'.$row->id) }}" class="btn btn-sm btn-primary">Inactive</a>
                     @endif
                 </td>
                 <td>

@@ -18,6 +18,7 @@ class TimerController extends Controller
    public function storeTimer(Request $request)
    {
     Timer::insert([
+        'course_id'=>$request->course_id,
         'time' => $request->timer,
         'status'=>1,
         'created_at' => Carbon::now(),
@@ -29,7 +30,7 @@ class TimerController extends Controller
     );
     return Redirect()->back()->with($notification);
    }
-   public function deleteTime($id){
+   public function deleteTimer($id){
 
 
     Timer::findOrFail($id)->delete();

@@ -42,7 +42,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($trainer as $row)
+              @foreach ($trainer as $row)  
 
               <tr>
                 <td>{{$row->id}}</td>
