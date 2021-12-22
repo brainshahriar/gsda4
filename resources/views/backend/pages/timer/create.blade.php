@@ -43,8 +43,7 @@
                     @endif
                 </td>
                 <td>
-                  <a id="delete" href="/admin/review-delete/{{$row->id}}"><i class="fas fa-trash"></i></a>
-
+                  <a id="delete" href="/admin/delete-timer/{{$row->id}}"><i class="fas fa-trash"></i></a>
                 </td>
 
               </tr>
