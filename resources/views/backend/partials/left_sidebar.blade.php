@@ -99,6 +99,12 @@
                                       </a>
                                   </li>
                                   <li>
+                                    <a href="{{route('timer')}}" class="ttr-material-button">
+                                      <span class="ttr-icon"><i class="fas fa-clock"></i></span>
+                                              <span class="ttr-label">Timer</span>
+                                            </a>
+                                        </li>
+                                  <li>
                                   <a href="{{route('bookings-list')}}" class="ttr-material-button">
                                     <span class="ttr-icon"><i class="fas fa-folder-open"></i></span>
                                             <span class="ttr-label">Classroom Course Booking</span>

@@ -15,6 +15,7 @@ class CreateTimersTable extends Migration
     {
         Schema::create('timers', function (Blueprint $table) {
             $table->id();
+            $table->integer('course_id')->nullable();
             $table->dateTime('time');
             $table->string('status')->default(1);
             $table->timestamps();

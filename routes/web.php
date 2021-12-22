@@ -47,6 +47,8 @@ use App\Http\Controllers\FlicardController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuestionController;
 
+use App\Http\Controllers\TimerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -435,3 +437,6 @@ Route::post('/coupon/calculation', [CartController::class,'couponCalcaultion']);
 
 Route::get('/coupon-remove', [CartController::class,'couponRemove']);
 
+//Timer
+
+Route::get('/admin/timer', [TimerController::class,'create'])->name('timer')->middleware('is_admin');
